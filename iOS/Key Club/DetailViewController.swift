@@ -16,7 +16,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var chairs: UILabel!
     
 
-
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
