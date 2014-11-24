@@ -14,7 +14,6 @@ class DetailViewController: UIViewController {
     var curEvent: NSDictionary = NSDictionary()
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var chairs: UILabel!
-    
 
     var detailItem: AnyObject? {
         didSet {
