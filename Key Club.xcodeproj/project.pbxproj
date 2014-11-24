@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9DF5153D1A1E391A004A6A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */; };
+		9DF5153F1A1E391A004A6A79 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */; };
+		9DF515411A1E391A004A6A79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF515401A1E391A004A6A79 /* DetailViewController.swift */; };
+		9DF515441A1E391A004A6A79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF515421A1E391A004A6A79 /* Main.storyboard */; };
+		9DF515461A1E391A004A6A79 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF515451A1E391A004A6A79 /* Images.xcassets */; };
+		9DF515491A1E391A004A6A79 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF515471A1E391A004A6A79 /* LaunchScreen.xib */; };
+		9DF515551A1E391A004A6A79 /* Key_ClubTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF515541A1E391A004A6A79 /* Key_ClubTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9DF5154F1A1E391A004A6A79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF5152F1A1E391A004A6A79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DF515361A1E391A004A6A79;
+			remoteInfo = "Key Club";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9DF515371A1E391A004A6A79 /* Key Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Key Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF5153B1A1E391A004A6A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		9DF515401A1E391A004A6A79 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9DF515431A1E391A004A6A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DF515451A1E391A004A6A79 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9DF515481A1E391A004A6A79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		9DF5154E1A1E391A004A6A79 /* Key ClubTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Key ClubTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF515531A1E391A004A6A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF515541A1E391A004A6A79 /* Key_ClubTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key_ClubTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DF515341A1E391A004A6A79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5154B1A1E391A004A6A79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9DF5152E1A1E391A004A6A79 = {
+			isa = PBXGroup;
+			children = (
+				9DF515391A1E391A004A6A79 /* Key Club */,
+				9DF515511A1E391A004A6A79 /* Key ClubTests */,
+				9DF515381A1E391A004A6A79 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9DF515381A1E391A004A6A79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DF515371A1E391A004A6A79 /* Key Club.app */,
+				9DF5154E1A1E391A004A6A79 /* Key ClubTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DF515391A1E391A004A6A79 /* Key Club */ = {
+			isa = PBXGroup;
+			children = (
+				9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */,
+				9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */,
+				9DF515401A1E391A004A6A79 /* DetailViewController.swift */,
+				9DF515421A1E391A004A6A79 /* Main.storyboard */,
+				9DF515451A1E391A004A6A79 /* Images.xcassets */,
+				9DF515471A1E391A004A6A79 /* LaunchScreen.xib */,
+				9DF5153A1A1E391A004A6A79 /* Supporting Files */,
+			);
+			path = "Key Club";
+			sourceTree = "<group>";
+		};
+		9DF5153A1A1E391A004A6A79 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DF5153B1A1E391A004A6A79 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9DF515511A1E391A004A6A79 /* Key ClubTests */ = {
+			isa = PBXGroup;
+			children = (
+				9DF515541A1E391A004A6A79 /* Key_ClubTests.swift */,
+				9DF515521A1E391A004A6A79 /* Supporting Files */,
+			);
+			path = "Key ClubTests";
+			sourceTree = "<group>";
+		};
+		9DF515521A1E391A004A6A79 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9DF515531A1E391A004A6A79 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DF515361A1E391A004A6A79 /* Key Club */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF515581A1E391A004A6A79 /* Build configuration list for PBXNativeTarget "Key Club" */;
+			buildPhases = (
+				9DF515331A1E391A004A6A79 /* Sources */,
+				9DF515341A1E391A004A6A79 /* Frameworks */,
+				9DF515351A1E391A004A6A79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Key Club";
+			productName = "Key Club";
+			productReference = 9DF515371A1E391A004A6A79 /* Key Club.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DF5154D1A1E391A004A6A79 /* Key ClubTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF5155B1A1E391A004A6A79 /* Build configuration list for PBXNativeTarget "Key ClubTests" */;
+			buildPhases = (
+				9DF5154A1A1E391A004A6A79 /* Sources */,
+				9DF5154B1A1E391A004A6A79 /* Frameworks */,
+				9DF5154C1A1E391A004A6A79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DF515501A1E391A004A6A79 /* PBXTargetDependency */,
+			);
+			name = "Key ClubTests";
+			productName = "Key ClubTests";
+			productReference = 9DF5154E1A1E391A004A6A79 /* Key ClubTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DF5152F1A1E391A004A6A79 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Cameron Bernhardt";
+				TargetAttributes = {
+					9DF515361A1E391A004A6A79 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					9DF5154D1A1E391A004A6A79 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 9DF515361A1E391A004A6A79;
+					};
+				};
+			};
+			buildConfigurationList = 9DF515321A1E391A004A6A79 /* Build configuration list for PBXProject "Key Club" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DF5152E1A1E391A004A6A79;
+			productRefGroup = 9DF515381A1E391A004A6A79 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DF515361A1E391A004A6A79 /* Key Club */,
+				9DF5154D1A1E391A004A6A79 /* Key ClubTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DF515351A1E391A004A6A79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF515441A1E391A004A6A79 /* Main.storyboard in Resources */,
+				9DF515491A1E391A004A6A79 /* LaunchScreen.xib in Resources */,
+				9DF515461A1E391A004A6A79 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5154C1A1E391A004A6A79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DF515331A1E391A004A6A79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF515411A1E391A004A6A79 /* DetailViewController.swift in Sources */,
+				9DF5153F1A1E391A004A6A79 /* MasterViewController.swift in Sources */,
+				9DF5153D1A1E391A004A6A79 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF5154A1A1E391A004A6A79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF515551A1E391A004A6A79 /* Key_ClubTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9DF515501A1E391A004A6A79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DF515361A1E391A004A6A79 /* Key Club */;
+			targetProxy = 9DF5154F1A1E391A004A6A79 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9DF515421A1E391A004A6A79 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF515431A1E391A004A6A79 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DF515471A1E391A004A6A79 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DF515481A1E391A004A6A79 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DF515561A1E391A004A6A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9DF515571A1E391A004A6A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DF515591A1E391A004A6A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Key Club/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9DF5155A1A1E391A004A6A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Key Club/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9DF5155C1A1E391A004A6A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Key ClubTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Key Club.app/Key Club";
+			};
+			name = Debug;
+		};
+		9DF5155D1A1E391A004A6A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Key ClubTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Key Club.app/Key Club";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DF515321A1E391A004A6A79 /* Build configuration list for PBXProject "Key Club" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF515561A1E391A004A6A79 /* Debug */,
+				9DF515571A1E391A004A6A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DF515581A1E391A004A6A79 /* Build configuration list for PBXNativeTarget "Key Club" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF515591A1E391A004A6A79 /* Debug */,
+				9DF5155A1A1E391A004A6A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DF5155B1A1E391A004A6A79 /* Build configuration list for PBXNativeTarget "Key ClubTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF5155C1A1E391A004A6A79 /* Debug */,
+				9DF5155D1A1E391A004A6A79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DF5152F1A1E391A004A6A79 /* Project object */;
+}
