@@ -82,7 +82,7 @@ class MasterViewController: UITableViewController {
     }
     
     func getData() -> NSDictionary? {
-        let data: NSData? = NSData(contentsOfURL: NSURL(string: "https://script.google.com/macros/s/AKfycbxHk_GXziSAwSH6umVyz3LnnbgpkA9BnqvL2ILeFdhdUkLKobg/exec?next=asdasd")!)
+        let data: NSData? = NSData(contentsOfURL: NSURL(string: "https://api.myjson.com/bins/tdd3")!)
         if let req = data {
             var error: NSError?
             println(NSJSONSerialization.JSONObjectWithData(req, options: NSJSONReadingOptions.MutableContainers, error: &error))
