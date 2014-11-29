@@ -48,17 +48,20 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                /* This deselects the cell when clicked to avoid the persistent highlight issue
-                It's a simpler solution, but fixing it rather than hiding it looks better */
-                //                self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
-                
-                let object: String = objects[indexPath.row] as String
-                if let realIndex: String = tags[object] {
-                    let val: NSDictionary = pulledData.valueForKey(realIndex) as NSDictionary
-                    (segue.destinationViewController as DetailViewController).curEvent = val
-                    (segue.destinationViewController as DetailViewController).detailItem = object
+        if let indexPath = self.tableView.indexPathForSelectedRow() {
+            /* This deselects the cell when clicked to avoid the persistent highlight issue
+            It's a simpler solution, but fixing it rather than hiding it looks better */
+            //                self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
+            
+            let object: String = objects[indexPath.row] as String
+            if let realIndex: String = tags[object] {
+                let val: NSDictionary = pulledData.valueForKey(realIndex) as NSDictionary
+                if let view: UITabBarController = segue.destinationViewController as? UITabBarController {
+                    let views: [UIViewController] = (view.viewControllers as [UIViewController])
+                    if let nextView: DetailViewController = views[0] as? DetailViewController{
+                        nextView.curEvent = val
+                        nextView.detailItem = object
+                    }
                 }
             }
         }
@@ -85,7 +88,6 @@ class MasterViewController: UITableViewController {
         let data: NSData? = NSData(contentsOfURL: NSURL(string: "https://api.myjson.com/bins/tdd3")!)
         if let req = data {
             var error: NSError?
-            println(NSJSONSerialization.JSONObjectWithData(req, options: NSJSONReadingOptions.MutableContainers, error: &error))
             if let JSON: NSDictionary = NSJSONSerialization.JSONObjectWithData(req, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSDictionary {
                 return JSON
             }

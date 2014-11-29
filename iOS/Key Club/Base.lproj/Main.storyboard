@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Master-->
@@ -46,7 +47,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="showDetail" id="jUr-3t-vfg"/>
+                                    <segue destination="NC5-s0-XMa" kind="show" id="0U1-9A-9GU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,14 +76,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Date" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
-                                <rect key="frame" x="20" y="112" width="560" height="17"/>
+                                <rect key="frame" x="282" y="80" width="36" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chairs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-UZ-Tbk">
-                                <rect key="frame" x="275.5" y="289.5" width="49.5" height="20.5"/>
+                                <rect key="frame" x="276" y="130" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -90,23 +91,76 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" constant="20" symbolic="YES" id="62x-JV-TTJ"/>
-                            <constraint firstAttribute="centerY" secondItem="HLM-UZ-Tbk" secondAttribute="centerY" id="GDU-qw-7Ur"/>
-                            <constraint firstAttribute="centerX" secondItem="HLM-UZ-Tbk" secondAttribute="centerX" id="ZeC-a9-reK"/>
-                            <constraint firstAttribute="centerY" secondItem="Lei-5M-9Gs" secondAttribute="centerY" constant="179.5" id="n8V-AT-MZv"/>
-                            <constraint firstAttribute="trailing" secondItem="Lei-5M-9Gs" secondAttribute="trailing" constant="20" symbolic="YES" id="pXB-RP-Zz6"/>
+                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="top" secondItem="cIm-e0-J51" secondAttribute="bottom" constant="16" id="NzH-ez-JuK"/>
+                            <constraint firstAttribute="centerX" secondItem="HLM-UZ-Tbk" secondAttribute="centerX" constant="-0.75" id="ZeC-a9-reK"/>
+                            <constraint firstAttribute="centerX" secondItem="Lei-5M-9Gs" secondAttribute="centerX" id="n78-Rq-9A3"/>
+                            <constraint firstItem="HLM-UZ-Tbk" firstAttribute="top" secondItem="Lei-5M-9Gs" secondAttribute="bottom" constant="29" id="nMt-uX-Uzl"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Details" id="JbR-al-qmc"/>
                     <navigationItem key="navigationItem" title="Details" id="cra-N8-TIN"/>
                     <connections>
                         <outlet property="chairs" destination="HLM-UZ-Tbk" id="f9R-qj-fjK"/>
-                        <outlet property="detailName" destination="cra-N8-TIN" id="ysx-KZ-Uhm"/>
+                        <outlet property="detailName" destination="cra-N8-TIN" id="mqt-zX-0wR"/>
                         <outlet property="eventDescription" destination="Lei-5M-9Gs" id="zEV-7N-TXq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1343" y="64"/>
+            <point key="canvasLocation" x="2313" y="-386"/>
+        </scene>
+        <!--Signup-->
+        <scene sceneID="oSy-Qk-6sL">
+            <objects>
+                <viewController title="Signup" id="CdS-fx-I1W" customClass="SignupViewController" customModule="Key_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5yH-2b-3kX"/>
+                        <viewControllerLayoutGuide type="bottom" id="qLN-XY-PET"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FlR-Qo-Gf6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PUf-25-8IX">
+                                <rect key="frame" x="16" y="513" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="PUf-25-8IX" firstAttribute="leading" secondItem="FlR-Qo-Gf6" secondAttribute="leadingMargin" id="5fT-cM-JZd"/>
+                            <constraint firstItem="qLN-XY-PET" firstAttribute="top" secondItem="PUf-25-8IX" secondAttribute="bottom" constant="8" id="FoU-GI-fYP"/>
+                            <constraint firstItem="PUf-25-8IX" firstAttribute="trailing" secondItem="FlR-Qo-Gf6" secondAttribute="trailingMargin" id="JL2-TY-1MO"/>
+                            <constraint firstAttribute="centerX" secondItem="PUf-25-8IX" secondAttribute="centerX" id="i2V-UN-oxc"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Signups" id="hdK-Lk-wpZ"/>
+                    <navigationItem key="navigationItem" title="Signups" id="1DB-RJ-DJs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqs-oD-K3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2313" y="324"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Ubg-ua-nYD">
+            <objects>
+                <tabBarController id="NC5-s0-XMa" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Gdl-Go-wVh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Ah7-4n-0Wa" kind="relationship" relationship="viewControllers" id="ejg-bn-e83"/>
+                        <segue destination="CdS-fx-I1W" kind="relationship" relationship="viewControllers" id="VRT-KO-Z4g"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xXd-Mv-jDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1372" y="64"/>
         </scene>
     </scenes>
 </document>

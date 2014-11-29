@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D740D141A29441D00FD52A2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D740D131A29441D00FD52A2 /* SignupViewController.swift */; };
 		9DF5153D1A1E391A004A6A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */; };
 		9DF5153F1A1E391A004A6A79 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */; };
 		9DF515411A1E391A004A6A79 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF515401A1E391A004A6A79 /* DetailViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D740D131A29441D00FD52A2 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9DF515371A1E391A004A6A79 /* Key Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Key Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF5153B1A1E391A004A6A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */,
 				9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */,
 				9DF515401A1E391A004A6A79 /* DetailViewController.swift */,
+				9D740D131A29441D00FD52A2 /* SignupViewController.swift */,
 				9DF515421A1E391A004A6A79 /* Main.storyboard */,
 				9DF515451A1E391A004A6A79 /* Images.xcassets */,
 				9DF515471A1E391A004A6A79 /* LaunchScreen.xib */,
@@ -217,6 +220,7 @@
 			files = (
 				9DF515411A1E391A004A6A79 /* DetailViewController.swift in Sources */,
 				9DF5153F1A1E391A004A6A79 /* MasterViewController.swift in Sources */,
+				9D740D141A29441D00FD52A2 /* SignupViewController.swift in Sources */,
 				9DF5153D1A1E391A004A6A79 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
