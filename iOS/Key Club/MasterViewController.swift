@@ -61,6 +61,7 @@ class MasterViewController: UITableViewController {
                     if let nextView: DetailViewController = views[0] as? DetailViewController{
                         nextView.curEvent = val
                         nextView.detailItem = object
+                        nextView.key = realIndex
                     }
                 }
             }

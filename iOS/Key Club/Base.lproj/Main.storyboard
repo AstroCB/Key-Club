@@ -76,14 +76,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Date" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
-                                <rect key="frame" x="282" y="80" width="36" height="21"/>
+                                <rect key="frame" x="282" y="80" width="36" height="20.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chairs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-UZ-Tbk">
-                                <rect key="frame" x="276" y="130" width="50" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chairs" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HLM-UZ-Tbk">
+                                <rect key="frame" x="276" y="129" width="50" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -122,22 +122,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PUf-25-8IX">
-                                <rect key="frame" x="16" y="513" width="568" height="30"/>
+                                <rect key="frame" x="16" y="513" width="518" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UfD-qc-VFo">
+                                <rect key="frame" x="548" y="512" width="30" height="30"/>
+                                <state key="normal" title="Go">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendSignup" destination="CdS-fx-I1W" eventType="touchUpInside" id="L1N-wy-U15"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PUf-25-8IX" firstAttribute="leading" secondItem="FlR-Qo-Gf6" secondAttribute="leadingMargin" id="5fT-cM-JZd"/>
+                            <constraint firstItem="qLN-XY-PET" firstAttribute="top" secondItem="UfD-qc-VFo" secondAttribute="bottom" constant="9" id="BNH-MM-Icd"/>
                             <constraint firstItem="qLN-XY-PET" firstAttribute="top" secondItem="PUf-25-8IX" secondAttribute="bottom" constant="8" id="FoU-GI-fYP"/>
-                            <constraint firstItem="PUf-25-8IX" firstAttribute="trailing" secondItem="FlR-Qo-Gf6" secondAttribute="trailingMargin" id="JL2-TY-1MO"/>
-                            <constraint firstAttribute="centerX" secondItem="PUf-25-8IX" secondAttribute="centerX" id="i2V-UN-oxc"/>
+                            <constraint firstItem="PUf-25-8IX" firstAttribute="trailing" secondItem="FlR-Qo-Gf6" secondAttribute="trailingMargin" constant="-50" id="JL2-TY-1MO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UfD-qc-VFo" secondAttribute="trailing" constant="6" id="Scz-S6-8N7"/>
+                            <constraint firstAttribute="centerX" secondItem="PUf-25-8IX" secondAttribute="centerX" constant="25" id="i2V-UN-oxc"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Signups" id="hdK-Lk-wpZ"/>
                     <navigationItem key="navigationItem" title="Signups" id="1DB-RJ-DJs"/>
+                    <connections>
+                        <outlet property="person" destination="PUf-25-8IX" id="o2h-wK-kas"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqs-oD-K3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

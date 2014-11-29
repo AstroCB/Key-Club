@@ -32,6 +32,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailName: UINavigationItem!
     var curEvent: NSDictionary = NSDictionary()
+    var key: String = ""
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var chairs: UILabel!
     
@@ -54,28 +55,28 @@ class DetailViewController: UIViewController {
                     if let month: Int = date.valueForKey("month") as? Int {
                         let day: Int = date.valueForKey("day") as Int
                         let year: Int = date.valueForKey("year") as Int
-                        self.eventDescription.text = "Date: \(month)/\(day)/\(year)"
+                        self.eventDescription.text = "\(month)/\(day)/\(year)"
                     }
                 }
                 
                 // Set chairs
                 if let evtChairs: String = self.curEvent.valueForKey("chairs") as? String {
-                    var chairStr: String = "Chairs: "
+                    var chairStr: String = "Chairs"
                     let chairArr: [String] = evtChairs.split(", ")
                     
-                    if chairArr.count == 2 {
-                        chairStr += chairArr[0] + " and " + chairArr[1]
-                    } else if chairArr.count == 1 {
+                    if chairArr.count == 1 {
                         chairStr = "Chair: " + chairArr[0]
                     } else if chairArr.count == 0 {
                         chairStr = ""
                     } else {
                         for var i = 0; i < chairArr.count; i++ {
-                            if i == chairArr.count - 1 {
+                            /*if i == chairArr.count - 1 {
                                 chairStr += "and " + chairArr[i]
                             } else {
                                 chairStr += chairArr[i] + ", "
-                            }
+                            }*/
+                            chairs.numberOfLines++
+                            chairStr += "\n\(chairArr[i])"
                         }
                     }
                     chairs.text = chairStr
