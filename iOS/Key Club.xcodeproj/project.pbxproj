@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D0125FA1A2FA43A00A100DC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0125F91A2FA43A00A100DC /* TabViewController.swift */; };
+		9D3454481A2E495200044E1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3454471A2E495200044E1F /* SettingsViewController.swift */; };
 		9D740D141A29441D00FD52A2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D740D131A29441D00FD52A2 /* SignupViewController.swift */; };
 		9DF5153D1A1E391A004A6A79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */; };
 		9DF5153F1A1E391A004A6A79 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */; };
@@ -28,7 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9D0125F91A2FA43A00A100DC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		9D3454471A2E495200044E1F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		9D740D131A29441D00FD52A2 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9DBC746C1A2EA34000EA80A5 /* Key Club.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Key Club.entitlements"; sourceTree = "<group>"; };
 		9DF515371A1E391A004A6A79 /* Key Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Key Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF5153B1A1E391A004A6A79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,8 +86,11 @@
 		9DF515391A1E391A004A6A79 /* Key Club */ = {
 			isa = PBXGroup;
 			children = (
+				9DBC746C1A2EA34000EA80A5 /* Key Club.entitlements */,
 				9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */,
 				9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */,
+				9D3454471A2E495200044E1F /* SettingsViewController.swift */,
+				9D0125F91A2FA43A00A100DC /* TabViewController.swift */,
 				9DF515401A1E391A004A6A79 /* DetailViewController.swift */,
 				9D740D131A29441D00FD52A2 /* SignupViewController.swift */,
 				9DF515421A1E391A004A6A79 /* Main.storyboard */,
@@ -167,6 +175,12 @@
 				TargetAttributes = {
 					9DF515361A1E391A004A6A79 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = VFK9RBFX9F;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9DF5154D1A1E391A004A6A79 = {
 						CreatedOnToolsVersion = 6.1;
@@ -219,8 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DF515411A1E391A004A6A79 /* DetailViewController.swift in Sources */,
+				9D0125FA1A2FA43A00A100DC /* TabViewController.swift in Sources */,
 				9DF5153F1A1E391A004A6A79 /* MasterViewController.swift in Sources */,
 				9D740D141A29441D00FD52A2 /* SignupViewController.swift in Sources */,
+				9D3454481A2E495200044E1F /* SettingsViewController.swift in Sources */,
 				9DF5153D1A1E391A004A6A79 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,9 +360,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Key Club/Key Club.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Key Club/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -355,9 +375,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Key Club/Key Club.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Key Club/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

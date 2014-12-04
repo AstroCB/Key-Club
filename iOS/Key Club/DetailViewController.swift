@@ -35,6 +35,7 @@ class DetailViewController: UIViewController {
     var key: String = ""
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var chairs: UILabel!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     var detailItem: AnyObject? {
         didSet {
@@ -71,9 +72,9 @@ class DetailViewController: UIViewController {
                     } else {
                         for var i = 0; i < chairArr.count; i++ {
                             /*if i == chairArr.count - 1 {
-                                chairStr += "and " + chairArr[i]
+                            chairStr += "and " + chairArr[i]
                             } else {
-                                chairStr += chairArr[i] + ", "
+                            chairStr += chairArr[i] + ", "
                             }*/
                             chairs.numberOfLines++
                             chairStr += "\n\(chairArr[i])"
@@ -89,6 +90,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.configureView()
+        self.activity.hidesWhenStopped = true
     }
     
     override func didReceiveMemoryWarning() {

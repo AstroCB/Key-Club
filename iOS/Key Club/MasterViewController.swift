@@ -13,6 +13,7 @@ class MasterViewController: UITableViewController {
     var objects: NSMutableArray = NSMutableArray()
     var pulledData: NSDictionary = NSDictionary()
     var tags: [String: String] = [String: String]()
+    var reload: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,10 +50,6 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indexPath = self.tableView.indexPathForSelectedRow() {
-            /* This deselects the cell when clicked to avoid the persistent highlight issue
-            It's a simpler solution, but fixing it rather than hiding it looks better */
-            //                self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
-            
             let object: String = objects[indexPath.row] as String
             if let realIndex: String = tags[object] {
                 let val: NSDictionary = pulledData.valueForKey(realIndex) as NSDictionary
@@ -96,12 +93,20 @@ class MasterViewController: UITableViewController {
         return nil
     }
     
-    func loadTable() {
+    
+    @IBAction func loadTable() {
+        if reload {
+            objects.removeAllObjects()
+            tableView.reloadData()
+        } else {
+            reload = true
+        }
+        
         if let data = getData() {
             pulledData = data
             for i in data {
-                if let event: AnyObject = i.value as? NSDictionary {
-                    if let name: AnyObject = event.valueForKey("pretty_name") {
+                if let event: NSDictionary = i.value as? NSDictionary {
+                    if let name: String = event.valueForKey("pretty_name") as? String {
                         insertNewObject(name)
                         tags[name as String] = i.key as? String
                     }

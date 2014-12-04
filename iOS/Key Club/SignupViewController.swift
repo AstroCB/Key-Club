@@ -8,33 +8,51 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var person: UITextField!
-    
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activity.hidesWhenStopped = true
+        self.popView()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func sendSignup() {
+    // Allows pressing return to dismiss keyboard
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func popView() {
         let myKey: String = (self.tabBarController?.viewControllers as [DetailViewController])[0].key
-        if let url: NSURL = NSURL(string: "https://script.google.com/macros/s/AKfycbxHk_GXziSAwSH6umVyz3LnnbgpkA9BnqvL2ILeFdhdUkLKobg/exec?post=true&eventRow=\(myKey)&person=\(self.person.text)") {
-            
-            let session = NSURLSession.sharedSession()
-            let dataTask = session.dataTaskWithURL(url, completionHandler: {(data: NSData!, response:NSURLResponse!,
-                error: NSError!) -> Void in
-                println("\(self.person.text) added")
-                // Disable button later and provide confirmation
-            })
-            
-            dataTask.resume()
+        if let event: NSDictionary = self.getData()?.valueForKey(myKey) as? NSDictionary {
+            if let signers: String = event.valueForKey("signups") as? String {
+                let signArr: [String] = signers.split(",")
+                var signStr = ""
+                for i in signArr {
+                    signStr += "\(i)\n\n"
+                }
+                if let text: UITextView = textView {
+                    textView.text = signStr
+                }
+            }
         }
-        
-        
+    }
+
+    func getData() -> NSDictionary? {
+        let data: NSData? = NSData(contentsOfURL: NSURL(string: "https://api.myjson.com/bins/tdd3")!)
+        if let req = data {
+            var error: NSError?
+            if let JSON: NSDictionary = NSJSONSerialization.JSONObjectWithData(req, options: NSJSONReadingOptions.MutableContainers, error: &error) as? NSDictionary {
+                return JSON
+            }
+        }
+        return nil
     }
 }
