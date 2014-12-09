@@ -35,8 +35,9 @@ class DetailViewController: UIViewController {
     var key: String = ""
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var chairs: UILabel!
+
     @IBOutlet weak var activity: UIActivityIndicatorView!
-    
+    @IBOutlet weak var details: UITextView!
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
@@ -62,25 +63,21 @@ class DetailViewController: UIViewController {
                 
                 // Set chairs
                 if let evtChairs: String = self.curEvent.valueForKey("chairs") as? String {
-                    var chairStr: String = "Chairs"
+                    var chairStr: String = ""
                     let chairArr: [String] = evtChairs.split(", ")
-                    
-                    if chairArr.count == 1 {
-                        chairStr = "Chair: " + chairArr[0]
-                    } else if chairArr.count == 0 {
-                        chairStr = ""
-                    } else {
-                        for var i = 0; i < chairArr.count; i++ {
-                            /*if i == chairArr.count - 1 {
-                            chairStr += "and " + chairArr[i]
-                            } else {
-                            chairStr += chairArr[i] + ", "
-                            }*/
-                            chairs.numberOfLines++
-                            chairStr += "\n\(chairArr[i])"
-                        }
+                    for var i = 0; i < chairArr.count; i++ {
+                        chairStr += "\(chairArr[i])\n"
+                        chairs.numberOfLines++
                     }
                     chairs.text = chairStr
+                }
+                
+                // Set details
+                
+                if let description: String = self.curEvent.valueForKey("desc") as? String {
+                    self.details.text = description
+                } else {
+                    self.details.text = "-"
                 }
             }
         }

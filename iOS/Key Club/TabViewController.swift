@@ -55,8 +55,20 @@ class TabViewController: UITabBarController {
     }
     
     func alert(event: String) {
-        let myAlert: UIAlertController = UIAlertController(title: "Signed up!", message: "You've successfully signed up for \(event).", preferredStyle: .Alert)
-        myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.presentViewController(myAlert, animated: true, completion: nil)
+        let version: NSString = UIDevice.currentDevice().systemVersion as NSString
+        if  version.doubleValue >= 8 {
+            let myAlert: UIAlertController = UIAlertController(title: "Signed up!", message: "You've successfully signed up for \(event).", preferredStyle: .Alert)
+            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(myAlert, animated: true, completion: nil)
+        } else {
+            let alert: UIAlertView = UIAlertView()
+            alert.delegate = self
+            
+            alert.title = "Signed up!"
+            alert.message = "You've successfully signed up for \(event)."
+            alert.addButtonWithTitle("OK")
+            
+            alert.show()
+        }
     }
 }

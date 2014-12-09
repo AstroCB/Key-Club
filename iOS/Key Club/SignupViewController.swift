@@ -44,7 +44,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-
+    
     func getData() -> NSDictionary? {
         let data: NSData? = NSData(contentsOfURL: NSURL(string: "https://api.myjson.com/bins/tdd3")!)
         if let req = data {

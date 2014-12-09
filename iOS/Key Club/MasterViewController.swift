@@ -19,6 +19,10 @@ class MasterViewController: UITableViewController {
         super.awakeFromNib()
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .Default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,8 +44,12 @@ class MasterViewController: UITableViewController {
     }
     
     
-    func insertNewObject(obj: AnyObject) {
-        objects.insertObject(obj, atIndex: 0)
+    func insertNewObject(obj: AnyObject, date: String) {
+        var dict: NSMutableDictionary = NSMutableDictionary()
+        dict.setValue(obj, forKey: "name")
+        dict.setValue(date, forKey: "date")
+        
+        objects.insertObject(dict, atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
@@ -50,7 +58,8 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indexPath = self.tableView.indexPathForSelectedRow() {
-            let object: String = objects[indexPath.row] as String
+            let dict: NSDictionary = objects[indexPath.row] as NSDictionary
+            let object: String = dict.valueForKey("name") as String
             if let realIndex: String = tags[object] {
                 let val: NSDictionary = pulledData.valueForKey(realIndex) as NSDictionary
                 if let view: UITabBarController = segue.destinationViewController as? UITabBarController {
@@ -77,8 +86,15 @@ class MasterViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let object = objects[indexPath.row] as String
-        cell.textLabel.text = object
+        let object = objects[indexPath.row] as NSDictionary
+        
+        cell.textLabel!.text = object.valueForKey("name") as? String
+        cell.detailTextLabel?.text = object.valueForKey("date") as? String
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.lightTextColor()
+        cell.selectedBackgroundView = bgColorView
+        
         return cell
     }
     
@@ -95,6 +111,7 @@ class MasterViewController: UITableViewController {
     
     
     @IBAction func loadTable() {
+        // Check if it's a reload
         if reload {
             objects.removeAllObjects()
             tableView.reloadData()
@@ -102,13 +119,29 @@ class MasterViewController: UITableViewController {
             reload = true
         }
         
+        // Load original script to refresh
+        if let url: NSURL = NSURL(string: "https://script.google.com/macros/s/AKfycbxHk_GXziSAwSH6umVyz3LnnbgpkA9BnqvL2ILeFdhdUkLKobg/exec") {
+            let session = NSURLSession.sharedSession()
+            let dataTask = session.dataTaskWithURL(url, completionHandler: nil)
+            dataTask.resume()
+        }
+        
         if let data = getData() {
             pulledData = data
             for i in data {
                 if let event: NSDictionary = i.value as? NSDictionary {
                     if let name: String = event.valueForKey("pretty_name") as? String {
-                        insertNewObject(name)
-                        tags[name as String] = i.key as? String
+                        if let date: NSDictionary = event.valueForKey("date") as? NSDictionary {
+                            if let month: Int = date.valueForKey("month") as? Int {
+                                if let day: Int = date.valueForKey("day") as? Int {
+                                    if let year: Int = date.valueForKey("year") as? Int {
+                                        let date: String = "\(month)/\(day)/\(year)"
+                                        insertNewObject(name, date: date)
+                                        tags[name as String] = i.key as? String
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
