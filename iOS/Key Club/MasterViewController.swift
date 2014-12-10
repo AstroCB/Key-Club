@@ -28,6 +28,13 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.clearsSelectionOnViewWillAppear = false
         loadTable()
+        
+        // Appearance of top bar
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+        if let myriadPro: UIFont = UIFont(name: "Myriad Pro", size: 20){
+            let attrDict: [NSObject: AnyObject] = [NSFontAttributeName: myriadPro]
+            self.navigationController?.navigationBar.titleTextAttributes = attrDict
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,8 +46,9 @@ class MasterViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let path: NSIndexPath = self.tableView.indexPathForSelectedRow() {
-            self.tableView.deselectRowAtIndexPath(path, animated:animated)
+            self.tableView.deselectRowAtIndexPath(path, animated: animated)
         }
+        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
     }
     
     
@@ -151,5 +159,4 @@ class MasterViewController: UITableViewController {
             
         }
     }
-    
 }

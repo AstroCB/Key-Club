@@ -15,7 +15,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activity.hidesWhenStopped = true
         self.popView()
     }
     

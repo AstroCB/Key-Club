@@ -92,7 +92,7 @@
                         <barButtonItem key="leftBarButtonItem" image="Gear" id="Cy6-jg-Dn0">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="28h-Vw-CdI" kind="show" id="Wkc-dE-kRi"/>
+                                <segue destination="28h-Vw-CdI" kind="show" id="Uwt-zv-N1B"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Ywi-P2-189">
@@ -119,7 +119,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-CC-QFI">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0Nd-CC-QFI">
                                 <rect key="frame" x="559" y="72" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ofg-sm-zwk">
@@ -161,16 +161,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="wns-JX-fqb" secondAttribute="centerX" constant="1" id="7Nu-Ss-cc1"/>
+                            <constraint firstAttribute="centerX" secondItem="wns-JX-fqb" secondAttribute="centerX" id="7Nu-Ss-cc1"/>
                             <constraint firstItem="aO8-YN-a1a" firstAttribute="top" secondItem="Lei-5M-9Gs" secondAttribute="bottom" constant="52" id="9du-Xu-Zwg"/>
-                            <constraint firstItem="Ofg-sm-zwk" firstAttribute="top" secondItem="cIm-e0-J51" secondAttribute="bottom" constant="22" id="DoI-w7-OTM"/>
+                            <constraint firstItem="Ofg-sm-zwk" firstAttribute="top" secondItem="cIm-e0-J51" secondAttribute="bottom" constant="13" id="DoI-w7-OTM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0Nd-CC-QFI" secondAttribute="trailing" constant="5" id="K9b-UL-xZH"/>
                             <constraint firstItem="wns-JX-fqb" firstAttribute="top" secondItem="Ofg-sm-zwk" secondAttribute="bottom" constant="8" id="Lgh-X6-YNZ"/>
                             <constraint firstItem="Lei-5M-9Gs" firstAttribute="top" secondItem="ikC-zv-hOG" secondAttribute="bottom" constant="8" id="RQe-2q-ZTF"/>
-                            <constraint firstAttribute="centerX" secondItem="Lei-5M-9Gs" secondAttribute="centerX" constant="-1.75" id="VkQ-2g-Hep"/>
-                            <constraint firstAttribute="centerX" secondItem="HLM-UZ-Tbk" secondAttribute="centerX" constant="-1" id="aZX-7o-lXy"/>
-                            <constraint firstAttribute="centerX" secondItem="ikC-zv-hOG" secondAttribute="centerX" constant="-2" id="cOe-0S-xBr"/>
-                            <constraint firstAttribute="centerX" secondItem="aO8-YN-a1a" secondAttribute="centerX" constant="-0.75" id="dJh-g8-WfF"/>
+                            <constraint firstAttribute="centerX" secondItem="Lei-5M-9Gs" secondAttribute="centerX" constant="-2.75" id="VkQ-2g-Hep"/>
+                            <constraint firstAttribute="centerX" secondItem="HLM-UZ-Tbk" secondAttribute="centerX" constant="-2" id="aZX-7o-lXy"/>
+                            <constraint firstAttribute="centerX" secondItem="ikC-zv-hOG" secondAttribute="centerX" constant="-3" id="cOe-0S-xBr"/>
+                            <constraint firstAttribute="centerX" secondItem="aO8-YN-a1a" secondAttribute="centerX" constant="-1.75" id="dJh-g8-WfF"/>
                             <constraint firstItem="0Nd-CC-QFI" firstAttribute="top" secondItem="cIm-e0-J51" secondAttribute="bottom" constant="8" id="dNS-Uj-gKK"/>
                             <constraint firstAttribute="centerX" secondItem="Ofg-sm-zwk" secondAttribute="centerX" id="iQA-ho-Stv"/>
                             <constraint firstItem="HLM-UZ-Tbk" firstAttribute="top" secondItem="aO8-YN-a1a" secondAttribute="bottom" constant="8" id="lRn-az-ujX"/>
@@ -204,7 +204,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-kQ-H4x"/>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NEu-m7-KNe">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="NEu-m7-KNe">
                                 <rect key="frame" x="559" y="72" width="20" height="20"/>
                             </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R39-Kf-QZ5">
