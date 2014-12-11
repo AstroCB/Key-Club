@@ -96,12 +96,10 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         let object = objects[indexPath.row] as NSDictionary
         
-        cell.textLabel!.text = object.valueForKey("name") as? String
+        cell.textLabel?.text = object.valueForKey("name") as? String
         cell.detailTextLabel?.text = object.valueForKey("date") as? String
         
-        let bgColorView = UIView()
-        bgColorView.backgroundColor = UIColor.lightTextColor()
-        cell.selectedBackgroundView = bgColorView
+        cell.backgroundColor = UIColor(red: 5.0/255, green: 51.0/255, blue: 103.0/255, alpha: 1.0)
         
         return cell
     }

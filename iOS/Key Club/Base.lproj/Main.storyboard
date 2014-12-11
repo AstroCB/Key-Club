@@ -47,13 +47,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.019607843140000001" green="0.20000000000000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.019607843140000001" green="0.20000000000000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" id="VBH-Q3-2BM">
                             <rect key="frame" x="0.0" y="64" width="600" height="67"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.019607843140000001" green="0.20000000000000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="2pz-XF-uhl" detailTextLabel="0KK-sX-s32" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="m0d-ak-lc9">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="1" reuseIdentifier="Cell" textLabel="2pz-XF-uhl" detailTextLabel="0KK-sX-s32" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="m0d-ak-lc9">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
@@ -75,8 +76,10 @@
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.019607843140000001" green="0.20000000000000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.019607843140000001" green="0.20000000000000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="NC5-s0-XMa" kind="show" id="0U1-9A-9GU"/>
                                 </connections>
