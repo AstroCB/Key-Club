@@ -17,8 +17,6 @@ class TabViewController: UITabBarController {
                 self.navigationItem.rightBarButtonItem = button
             }
         }
-        
-//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 47, blue: 95, alpha: 1)
     }
     
     internal func sendSignup() {
@@ -62,8 +60,7 @@ class TabViewController: UITabBarController {
     }
     
     func alert(event: String) {
-        let version: NSString = UIDevice.currentDevice().systemVersion as NSString
-        if  version.doubleValue >= 8 {
+        if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
             let myAlert: UIAlertController = UIAlertController(title: "Signed up!", message: "You've successfully signed up for \(event).", preferredStyle: .Alert)
             myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(myAlert, animated: true, completion: nil)

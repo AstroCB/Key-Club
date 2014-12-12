@@ -37,6 +37,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
                 for i in signArr {
                     signStr += "\(i)\n\n"
                 }
+                
+                if signStr.split(" ").count == 1 {
+                    signStr = "No signups.\nBe the first!"
+                }
+                
                 if let text: UITextView = textView {
                     textView.text = signStr
                 }

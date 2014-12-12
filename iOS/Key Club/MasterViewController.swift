@@ -29,8 +29,6 @@ class MasterViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = false
         loadTable()
         
-        // Appearance of top bar
-        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         if let myriadPro: UIFont = UIFont(name: "Myriad Pro", size: 20){
             let attrDict: [NSObject: AnyObject] = [NSFontAttributeName: myriadPro]
             self.navigationController?.navigationBar.titleTextAttributes = attrDict
@@ -48,7 +46,6 @@ class MasterViewController: UITableViewController {
         if let path: NSIndexPath = self.tableView.indexPathForSelectedRow() {
             self.tableView.deselectRowAtIndexPath(path, animated: animated)
         }
-        self.navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
     }
     
     
@@ -117,6 +114,11 @@ class MasterViewController: UITableViewController {
     
     
     @IBAction func loadTable() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        dispatch_async(dispatch_get_main_queue(), {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })
+        
         // Check if it's a reload
         if reload {
             objects.removeAllObjects()
@@ -152,9 +154,24 @@ class MasterViewController: UITableViewController {
                 }
             }
         } else {
-            let alert: UIAlertController = UIAlertController(title: "No Connection", message: "The Key Club app requires an Internet connection to function properly.", preferredStyle: .Alert)
-            self.presentViewController(alert, animated: true, completion: nil)
-            
+            if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
+                let alert: UIAlertController = UIAlertController(title: "No Connection", message: "The Key Club app requires an Internet connection to function properly.", preferredStyle: .Alert)
+                let action: UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(action)
+                
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+            } else {
+                let alert: UIAlertView = UIAlertView()
+                alert.delegate = self
+                
+                alert.title = "No Connection"
+                alert.message = "The Key Club app requires an Internet connection to function properly."
+                alert.addButtonWithTitle("OK")
+                
+                alert.show()
+
+            }
         }
     }
 }
