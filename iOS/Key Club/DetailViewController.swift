@@ -35,9 +35,11 @@ class DetailViewController: UIViewController {
     var key: String = ""
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var chairs: UILabel!
-
+    @IBOutlet weak var chairLabel: UILabel!
+    
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var details: UITextView!
+    
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
@@ -58,6 +60,11 @@ class DetailViewController: UIViewController {
                         let day: Int = date.valueForKey("day") as Int
                         let year: Int = date.valueForKey("year") as Int
                         self.eventDescription.text = "\(month)/\(day)/\(year)"
+                        
+                        if let time: String = self.curEvent.valueForKey("time") as? String {
+                            self.eventDescription.numberOfLines++
+                            self.eventDescription.text = "\(self.eventDescription.text!)\n(\(time))"
+                        }
                     }
                 }
                 
@@ -69,13 +76,23 @@ class DetailViewController: UIViewController {
                         chairStr += "\(chairArr[i])\n"
                         chairs.numberOfLines++
                     }
+                    if chairArr.count == 1 {
+                        chairLabel.text = "Chair"
+                    } else if chairArr.count == 0 {
+                        chairLabel.text = ""
+                        chairStr = ""
+                    }
                     chairs.text = chairStr
                 }
                 
                 // Set details
                 
                 if let description: String = self.curEvent.valueForKey("desc") as? String {
-                    self.details.text = description
+                    if description.isEmpty {
+                        self.details.text = "-"
+                    } else {
+                        self.details.text = description
+                    }
                 } else {
                     self.details.text = "-"
                 }
