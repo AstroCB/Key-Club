@@ -245,7 +245,7 @@
         <!--Settings-->
         <scene sceneID="H5z-Ui-ueh">
             <objects>
-                <viewController id="28h-Vw-CdI" customClass="SettingsViewController" customModule="Key_Club" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="28h-Vw-CdI" customClass="SettingsViewController" customModule="Key_Club" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YGq-PD-xvt"/>
                         <viewControllerLayoutGuide type="bottom" id="N5h-T6-Mh2"/>
@@ -297,7 +297,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="bSz-TB-xDd">
-                                <rect key="frame" x="17" y="505" width="565" height="80"/>
+                                <rect key="frame" x="18" y="505" width="565" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">All registered trademarks (unless otherwise stated) are those of Key Club International. The primary color ("Key Club blue") and font ("Myriad Pro") used for this application are recommended by Key Club International in their "2014 Key Club Design Guide" (available at http://keyclub.org/Libraries/design_elements/Fall_guide_2014.sflb.ashx).</string>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -313,7 +313,7 @@
                             <constraint firstAttribute="centerX" secondItem="KZU-nx-WVr" secondAttribute="centerX" constant="-0.5" id="7Ej-Ml-9BX"/>
                             <constraint firstItem="KZU-nx-WVr" firstAttribute="top" secondItem="NfM-TL-Mjo" secondAttribute="bottom" constant="14.5" id="BEq-Lk-cly"/>
                             <constraint firstItem="N5h-T6-Mh2" firstAttribute="top" secondItem="bSz-TB-xDd" secondAttribute="bottom" constant="15" id="c7P-cY-CYG"/>
-                            <constraint firstItem="Np6-PM-k04" firstAttribute="top" secondItem="YGq-PD-xvt" secondAttribute="bottom" constant="86" id="fvs-qb-tc6"/>
+                            <constraint firstItem="Np6-PM-k04" firstAttribute="top" secondItem="YGq-PD-xvt" secondAttribute="bottom" constant="130" id="fvs-qb-tc6"/>
                             <constraint firstAttribute="centerX" secondItem="jvX-la-e8N" secondAttribute="centerX" constant="-0.5" id="ifX-ji-dAp"/>
                             <constraint firstItem="Yvg-BH-hOS" firstAttribute="top" secondItem="jvX-la-e8N" secondAttribute="bottom" constant="2.5" id="k5b-ef-ds0"/>
                             <constraint firstAttribute="centerX" secondItem="bSz-TB-xDd" secondAttribute="centerX" id="kR2-9t-ozN"/>
@@ -347,6 +347,7 @@
                     <connections>
                         <segue destination="Ah7-4n-0Wa" kind="relationship" relationship="viewControllers" id="ejg-bn-e83"/>
                         <segue destination="CdS-fx-I1W" kind="relationship" relationship="viewControllers" id="hoO-Ey-9Wh"/>
+                        <segue destination="28h-Vw-CdI" kind="show" identifier="signIn" id="dUg-9w-XGV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xXd-Mv-jDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -360,4 +361,7 @@
         <image name="Logo" width="175" height="26"/>
         <image name="Signups" width="44" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dUg-9w-XGV"/>
+    </inferredMetricsTieBreakers>
 </document>

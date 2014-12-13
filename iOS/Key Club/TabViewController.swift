@@ -23,16 +23,17 @@ class TabViewController: UITabBarController {
         let detailView: DetailViewController = (self.viewControllers as [UIViewController])[0] as DetailViewController
         let signView: SignupViewController = (self.viewControllers as [UIViewController])[1] as SignupViewController
         
-        if let detail: UIActivityIndicatorView = detailView.activity {
-            detail.startAnimating()
-        }
-        
-        if let sign: UIActivityIndicatorView = signView.activity {
-            sign.startAnimating()
-        }
-        
         if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club"){
             if let signer: String = defaults.valueForKey("encoded_name") as? String {
+                
+                if let detail: UIActivityIndicatorView = detailView.activity {
+                    detail.startAnimating()
+                }
+                
+                if let sign: UIActivityIndicatorView = signView.activity {
+                    sign.startAnimating()
+                }
+                
                 if let url: NSURL = NSURL(string: "https://script.google.com/macros/s/AKfycbxHk_GXziSAwSH6umVyz3LnnbgpkA9BnqvL2ILeFdhdUkLKobg/exec?post=true&eventRow=\(detailView.key)&person=\(signer)") {
                     let session = NSURLSession.sharedSession()
                     let dataTask = session.dataTaskWithURL(url, completionHandler: {(data: NSData!, response:NSURLResponse!,
@@ -50,17 +51,18 @@ class TabViewController: UITabBarController {
                             
                             self.alert(detailView.curEvent.valueForKey("pretty_name") as String)
                         })
-                        // TODO: Check to see if they've already signed up
                     })
                     
                     dataTask.resume()
                 }
+            } else {
+                self.performSegueWithIdentifier("signIn", sender: self)
             }
         }
     }
     
     func alert(event: String) {
-        if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
+        if let getModernAlert: AnyClass = NSClassFromString("UIAlertController") {
             let myAlert: UIAlertController = UIAlertController(title: "Signed up!", message: "You've successfully signed up for \(event).", preferredStyle: .Alert)
             myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(myAlert, animated: true, completion: nil)
