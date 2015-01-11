@@ -10,6 +10,7 @@
 		9D0125FA1A2FA43A00A100DC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0125F91A2FA43A00A100DC /* TabViewController.swift */; };
 		9D1EBFCA1A3632FA006FA5A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D1EBFC91A3632FA006FA5A8 /* Images.xcassets */; };
 		9D3454481A2E495200044E1F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3454471A2E495200044E1F /* SettingsViewController.swift */; };
+		9D6D2D251A5E28EB003E61D8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D2D241A5E28EB003E61D8 /* WebViewController.swift */; };
 		9D740D141A29441D00FD52A2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D740D131A29441D00FD52A2 /* SignupViewController.swift */; };
 		9DA4CD9E1A3260EF00CFC0A0 /* MYRIADPRO-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 9DA4CD951A3260EF00CFC0A0 /* MYRIADPRO-BOLD.OTF */; };
 		9DA4CD9F1A3260EF00CFC0A0 /* MYRIADPRO-BOLDCOND.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 9DA4CD961A3260EF00CFC0A0 /* MYRIADPRO-BOLDCOND.OTF */; };
@@ -42,6 +43,7 @@
 		9D0125F91A2FA43A00A100DC /* TabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		9D1EBFC91A3632FA006FA5A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D3454471A2E495200044E1F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9D6D2D241A5E28EB003E61D8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		9D740D131A29441D00FD52A2 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9DA4CD951A3260EF00CFC0A0 /* MYRIADPRO-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-BOLD.OTF"; sourceTree = "<group>"; };
 		9DA4CD961A3260EF00CFC0A0 /* MYRIADPRO-BOLDCOND.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MYRIADPRO-BOLDCOND.OTF"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				9DF5153C1A1E391A004A6A79 /* AppDelegate.swift */,
 				9DF5153E1A1E391A004A6A79 /* MasterViewController.swift */,
 				9D3454471A2E495200044E1F /* SettingsViewController.swift */,
+				9D6D2D241A5E28EB003E61D8 /* WebViewController.swift */,
 				9D0125F91A2FA43A00A100DC /* TabViewController.swift */,
 				9DF515401A1E391A004A6A79 /* DetailViewController.swift */,
 				9D740D131A29441D00FD52A2 /* SignupViewController.swift */,
@@ -281,6 +284,7 @@
 				9D0125FA1A2FA43A00A100DC /* TabViewController.swift in Sources */,
 				9DF5153F1A1E391A004A6A79 /* MasterViewController.swift in Sources */,
 				9D740D141A29441D00FD52A2 /* SignupViewController.swift in Sources */,
+				9D6D2D251A5E28EB003E61D8 /* WebViewController.swift in Sources */,
 				9D3454481A2E495200044E1F /* SettingsViewController.swift in Sources */,
 				9DF5153D1A1E391A004A6A79 /* AppDelegate.swift in Sources */,
 			);

@@ -26,34 +26,45 @@ class TabViewController: UITabBarController {
         if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club"){
             if let signer: String = defaults.valueForKey("encoded_name") as? String {
                 
-                if let detail: UIActivityIndicatorView = detailView.activity {
-                    detail.startAnimating()
-                }
-                
-                if let sign: UIActivityIndicatorView = signView.activity {
-                    sign.startAnimating()
-                }
-                
                 if let url: NSURL = NSURL(string: "https://script.google.com/macros/s/AKfycbxHk_GXziSAwSH6umVyz3LnnbgpkA9BnqvL2ILeFdhdUkLKobg/exec?post=true&eventRow=\(detailView.key)&person=\(signer)") {
-                    let session = NSURLSession.sharedSession()
-                    let dataTask = session.dataTaskWithURL(url, completionHandler: {(data: NSData!, response:NSURLResponse!,
+                    let session: NSURLSession = NSURLSession.sharedSession()
+                    
+                    // Set max signups
+                    
+                    // Still room
+                    if let detail: UIActivityIndicatorView = detailView.activity {
+                        detail.startAnimating()
+                    }
+                    
+                    if let sign: UIActivityIndicatorView = signView.activity {
+                        sign.startAnimating()
+                    }
+                    
+                    let dataTask: NSURLSessionDataTask = session.dataTaskWithURL(url, completionHandler: {(data: NSData!, response: NSURLResponse!,
                         error: NSError!) -> Void in
                         dispatch_async(dispatch_get_main_queue(), {
+                            signView.numSignedUp = 0
                             signView.popView()
                             
-                            if let detail: UIActivityIndicatorView = detailView.activity {
-                                detail.stopAnimating()
+                            if let nextDetail: UIActivityIndicatorView = detailView.activity {
+                                nextDetail.stopAnimating()
                             }
                             
-                            if let sign: UIActivityIndicatorView = signView.activity {
-                                sign.stopAnimating()
+                            if let nextSign: UIActivityIndicatorView = signView.activity {
+                                nextSign.stopAnimating()
                             }
-                            
-                            self.alert(detailView.curEvent.valueForKey("pretty_name") as String)
+                            if signView.numSignedUp < detailView.maxNum {
+                                let event: String = detailView.curEvent.valueForKey("pretty_name") as String
+                                self.alert("Signed up!", message:"You've successfully signed up for \(event).")
+                            } else {
+                                // Too many people signed up
+                                self.alert("Too many signups", message: "You've been placed in a waiting queue.")
+                            }
                         })
                     })
                     
                     dataTask.resume()
+                    
                 }
             } else {
                 self.performSegueWithIdentifier("signIn", sender: self)
@@ -61,17 +72,17 @@ class TabViewController: UITabBarController {
         }
     }
     
-    func alert(event: String) {
+    func alert(title: String, message: String) {
         if let getModernAlert: AnyClass = NSClassFromString("UIAlertController") {
-            let myAlert: UIAlertController = UIAlertController(title: "Signed up!", message: "You've successfully signed up for \(event).", preferredStyle: .Alert)
+            let myAlert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
             myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(myAlert, animated: true, completion: nil)
         } else {
             let alert: UIAlertView = UIAlertView()
             alert.delegate = self
             
-            alert.title = "Signed up!"
-            alert.message = "You've successfully signed up for \(event)."
+            alert.title = title
+            alert.message = message
             alert.addButtonWithTitle("OK")
             
             alert.show()

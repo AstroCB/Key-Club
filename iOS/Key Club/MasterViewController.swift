@@ -19,13 +19,12 @@ class MasterViewController: UITableViewController {
         super.awakeFromNib()
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .Default
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: false)
+        self.setNeedsStatusBarAppearanceUpdate()
+        
         self.clearsSelectionOnViewWillAppear = false
         loadTable()
         
@@ -33,6 +32,12 @@ class MasterViewController: UITableViewController {
             let attrDict: [NSObject: AnyObject] = [NSFontAttributeName: myriadPro]
             self.navigationController?.navigationBar.titleTextAttributes = attrDict
         }
+        
+        let announcementButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Announcements"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadInfo")
+        announcementButton.tintColor = UIColor.blackColor()
+        
+        let rightButtons: [UIBarButtonItem] = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "loadTable"), announcementButton]
+        self.navigationItem.rightBarButtonItems = rightButtons
     }
     
     override func didReceiveMemoryWarning() {
@@ -170,8 +175,12 @@ class MasterViewController: UITableViewController {
                 alert.addButtonWithTitle("OK")
                 
                 alert.show()
-
+                
             }
         }
+    }
+    
+    func loadInfo() {
+        self.performSegueWithIdentifier("loadInfo", sender: self)
     }
 }

@@ -33,12 +33,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailName: UINavigationItem!
     var curEvent: NSDictionary = NSDictionary()
     var key: String = ""
+    var maxNum: Int = 1000 // Set the default limit high in case they
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var chairs: UILabel!
     @IBOutlet weak var chairLabel: UILabel!
     
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var details: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var limit: UILabel!
+    @IBOutlet weak var limitLabel: UILabel!
     
     var detailItem: AnyObject? {
         didSet {
@@ -62,8 +66,14 @@ class DetailViewController: UIViewController {
                         self.eventDescription.text = "\(month)/\(day)/\(year)"
                         
                         if let time: String = self.curEvent.valueForKey("time") as? String {
-                            self.eventDescription.numberOfLines++
-                            self.eventDescription.text = "\(self.eventDescription.text!)\n(\(time))"
+                            if countElements(time) > 0 {
+                                self.eventDescription.numberOfLines++
+                                if time == "TBD" {
+                                    self.eventDescription.text = "\(self.eventDescription.text!)\n(Time TBD)"
+                                } else {
+                                    self.eventDescription.text = "\(self.eventDescription.text!)\n(\(time))"
+                                }
+                            }
                         }
                     }
                 }
@@ -74,19 +84,18 @@ class DetailViewController: UIViewController {
                     let chairArr: [String] = evtChairs.split(", ")
                     for var i = 0; i < chairArr.count; i++ {
                         chairStr += "\(chairArr[i])\n"
-                        chairs.numberOfLines++
+                        self.chairs.numberOfLines++
                     }
                     if chairArr.count == 1 {
-                        chairLabel.text = "Chair"
+                        self.chairLabel.text = "Chair"
                     } else if chairArr.count == 0 {
-                        chairLabel.text = ""
+                        self.chairLabel.text = ""
                         chairStr = ""
                     }
                     chairs.text = chairStr
                 }
                 
                 // Set details
-                
                 if let description: String = self.curEvent.valueForKey("desc") as? String {
                     if description.isEmpty {
                         self.details.text = "-"
@@ -96,6 +105,15 @@ class DetailViewController: UIViewController {
                 } else {
                     self.details.text = "-"
                 }
+                
+                // Set limit
+                if let numberOfSignups: Int = self.curEvent.valueForKey("maxSign") as? Int {
+                    self.limit.text = "\(numberOfSignups)"
+                    self.maxNum = numberOfSignups
+                } else {
+                    self.limit.hidden = true
+                    self.limitLabel.hidden = true
+                }
             }
         }
     }
@@ -103,6 +121,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.scrollView.scrollEnabled = true
         self.configureView()
     }
     
@@ -110,7 +129,5 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 

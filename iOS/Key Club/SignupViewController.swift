@@ -12,6 +12,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
+    var numSignedUp: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +35,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
             if let signers: String = event.valueForKey("signups") as? String {
                 let signArr: [String] = signers.split(",")
                 var signStr = ""
-                for i in signArr {
-                    signStr += "\(i)\n\n"
-                }
-                
-                if signStr.split(" ").count == 1 {
+                if countElements(signers) > 0 {
+                    for i in signArr {
+                        self.numSignedUp++
+                        
+                        if self.numSignedUp <= (self.tabBarController?.viewControllers as [DetailViewController])[0].maxNum {
+                            signStr += "\(i)\n\n"
+                        }
+                    }
+                } else {
                     signStr = "No signups.\nBe the first!"
                 }
                 
