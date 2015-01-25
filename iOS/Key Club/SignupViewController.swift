@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignupViewController: UIViewController, UITextFieldDelegate {
+class SignupViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
@@ -21,12 +21,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    // Allows pressing return to dismiss keyboard
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
     func popView() {

@@ -28,21 +28,21 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         disclaimer.font = UIFont(name: "Myriad Pro", size: 13)
         disclaimer.textColor = UIColor.lightGrayColor()
         
-        if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
+        let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club")!
             if let nameStr: String = defaults.valueForKey("name") as? String {
-                not.hidden = false
-                filledName.hidden = false
-                name.hidden = true
+                self.not.hidden = false
+                self.filledName.hidden = false
+                self.name.hidden = true
                 
-                name.text = nil
-                filledName.text = nameStr
+                self.name.text = nil
+                self.filledName.text = nameStr
             } else {
-                not.hidden = true
-                filledName.hidden = true
-                name.hidden = false
-                name.becomeFirstResponder()
+                self.edited = true
+                self.not.hidden = true
+                self.filledName.hidden = true
+                self.name.hidden = false
+                self.name.becomeFirstResponder()
             }
-        }
         data = self.getData()
     }
     

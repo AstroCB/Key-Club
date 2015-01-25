@@ -38,6 +38,19 @@ class MasterViewController: UITableViewController {
         
         let rightButtons: [UIBarButtonItem] = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "loadTable"), announcementButton]
         self.navigationItem.rightBarButtonItems = rightButtons
+        
+        let profileButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Profile"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadProf")
+        profileButton.tintColor = UIColor.blackColor()
+        
+        let settingsButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Gear"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadSettings")
+        settingsButton.tintColor = UIColor.grayColor()
+        
+        let leftButtons: [UIBarButtonItem] = [settingsButton, profileButton]
+        self.navigationItem.leftBarButtonItems = leftButtons
+        
+        dispatch_async(dispatch_get_main_queue(), { // Load up announcements first, as per Vincent's request
+            self.performSegueWithIdentifier("loadInfo", sender: self)
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,7 +87,8 @@ class MasterViewController: UITableViewController {
                 let val: NSDictionary = pulledData.valueForKey(realIndex) as NSDictionary
                 if let view: UITabBarController = segue.destinationViewController as? UITabBarController {
                     let views: [UIViewController] = (view.viewControllers as [UIViewController])
-                    if let nextView: DetailViewController = views[0] as? DetailViewController{
+                    if let nextView: DetailViewController = views[0] as? DetailViewController {
+                        // Send values to next view to avoid another network call
                         nextView.curEvent = val
                         nextView.detailItem = object
                         nextView.key = realIndex
@@ -182,5 +196,13 @@ class MasterViewController: UITableViewController {
     
     func loadInfo() {
         self.performSegueWithIdentifier("loadInfo", sender: self)
+    }
+    
+    func loadSettings() {
+        self.performSegueWithIdentifier("goToSettings", sender: self)
+    }
+    
+    func loadProf() {
+        self.performSegueWithIdentifier("goToProfile", sender: self)
     }
 }

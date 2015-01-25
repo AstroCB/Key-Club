@@ -29,9 +29,6 @@ class TabViewController: UITabBarController {
                 if let url: NSURL = NSURL(string: "https://script.google.com/macros/s/AKfycbxHk_GXziSAwSH6umVyz3LnnbgpkA9BnqvL2ILeFdhdUkLKobg/exec?post=true&eventRow=\(detailView.key)&person=\(signer)") {
                     let session: NSURLSession = NSURLSession.sharedSession()
                     
-                    // Set max signups
-                    
-                    // Still room
                     if let detail: UIActivityIndicatorView = detailView.activity {
                         detail.startAnimating()
                     }

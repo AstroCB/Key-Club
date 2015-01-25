@@ -44,6 +44,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var limit: UILabel!
     @IBOutlet weak var limitLabel: UILabel!
     
+//    @IBOutlet weak var contentView: UIView!
+
+    
     var detailItem: AnyObject? {
         didSet {
             // Update the view.
@@ -121,8 +124,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.scrollView.scrollEnabled = true
         self.configureView()
+        
+//        let leftConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Leading, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
+//        self.view.addConstraint(leftConstraint)
+//        
+//        let rightConstraint: NSLayoutConstraint = NSLayoutConstraint(item: self.contentView, attribute: NSLayoutAttribute.Trailing, relatedBy: .Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
+//        self.view.addConstraint(rightConstraint)
     }
     
     override func didReceiveMemoryWarning() {
