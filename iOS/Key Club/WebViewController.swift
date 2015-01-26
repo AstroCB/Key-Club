@@ -14,7 +14,6 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
     
-    
     override func viewDidLoad() {
         if let myriadPro: UIFont = UIFont(name: "Myriad Pro", size: 20){
             let attrDict: [NSObject: AnyObject] = [NSFontAttributeName: myriadPro]
