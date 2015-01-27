@@ -33,7 +33,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailName: UINavigationItem!
     var curEvent: NSDictionary = NSDictionary()
     var key: String = ""
-    var maxNum: Int = 1000 // Set the default limit high in case they
+    var maxNum: Int = 1000 // Set the default limit high in case it's not set
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var chairs: UILabel!
     @IBOutlet weak var chairLabel: UILabel!
