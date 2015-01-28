@@ -93,35 +93,39 @@ class TabViewController: UITabBarController {
         }
         
         if let validDate: String = date {
-            let day: String = validDate.split("\n")[0]
-            shareString += " The event takes place on \(day)"
-            
-            var time: String = validDate.split("\n")[1]
-            if !time.isEmpty && time != "TBD" {
-                // Strip parentheses
-                time = dropFirst(time)
-                time = dropLast(time)
+            if validDate != "Date" {
+                let day: String = validDate.split("\n")[0]
+                shareString += " The event takes place on \(day)"
                 
-                // Check if a start and end time are provided, or just a start time
-                if time.rangeOfString("-") != nil {
-                    shareString += " from \(time)."
+                var time: String = validDate.split("\n")[1]
+                if !time.isEmpty && time != "TBD" {
+                    // Strip parentheses
+                    time = dropFirst(time)
+                    time = dropLast(time)
+                    
+                    // Check if a start and end time are provided, or just a start time
+                    if time.rangeOfString("-") != nil {
+                        shareString += " from \(time)."
+                    } else {
+                        shareString += " at \(time)."
+                    }
                 } else {
-                    shareString += " at \(time)."
+                    shareString += "."
                 }
-            } else {
-                shareString += "."
             }
         }
         
         if !description.isEmpty {
-            shareString += " Here's what you'll be doing:\n\n\(description)\n\n"
+            if description != "Details" {
+                shareString += " Here's what you'll be doing:\n\n\(description)\n\n"
+            }
         }
         
         if let validLimit: String = limit {
-            shareString += "You'd better hurry! There's a limit of \(validLimit) people."
+            if validLimit != "Limit" {
+                shareString += "You'd better hurry! There's a limit of \(validLimit) people."
+            }
         }
-        
-//        shareString += "\n" // Give the link a bit of extra room after the string
         
         objectsToShare.append(shareString)
         

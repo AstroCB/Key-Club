@@ -194,6 +194,8 @@ class MasterViewController: UITableViewController {
         }
     }
     
+    // This is bad; figure out how to use parameters in selectors
+    
     func loadInfo() {
         self.performSegueWithIdentifier("loadInfo", sender: self)
     }
