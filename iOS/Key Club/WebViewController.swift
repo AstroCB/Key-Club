@@ -19,12 +19,13 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             let attrDict: [NSObject: AnyObject] = [NSFontAttributeName: myriadPro]
             self.navigationController?.navigationBar.titleTextAttributes = attrDict
         }
-        webView.delegate = self
+        self.webView.delegate = self
         
         // Disable bouncing to appear semi-native
-        webView.scrollView.bounces = false
+        self.webView.scrollView.bounces = false
+        self.webView.scrollView.indicatorStyle = .White
         
-        loadURL("https://dl.dropboxusercontent.com/u/24397004/tweet.html")
+        self.loadURL("https://dl.dropboxusercontent.com/u/24397004/tweet.html")
     }
     
     override func viewWillDisappear(animated: Bool) {

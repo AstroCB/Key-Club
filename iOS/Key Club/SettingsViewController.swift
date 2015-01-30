@@ -19,35 +19,40 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     var edited: Bool = false
     
     override func viewDidLoad() {
-        name.delegate = self
+        self.name.delegate = self
+        
+        if !self.isLoggedIn() {
+            self.navigationItem.rightBarButtonItem = nil
+        }
         
         // This convoluted mess adds a hyperlink to the design guide to make the description look nice
         let linkText: NSMutableAttributedString = NSMutableAttributedString(string: "All registered trademarks (unless otherwise stated) are those of Key Club International. The primary color (\"Key Club blue\") and font (\"Myriad Pro\") used for this application are recommended by Key Club International in their \"2014 Key Club Design Guide\" (available here).")
         linkText.addAttribute(NSLinkAttributeName, value: "http://keyclub.org/Libraries/design_elements/Fall_guide_2014.sflb.ashx", range: NSMakeRange(266, 4))
-        disclaimer.attributedText = linkText
-        disclaimer.font = UIFont(name: "Myriad Pro", size: 13)
-        disclaimer.textColor = UIColor.lightGrayColor()
+        self.disclaimer.attributedText = linkText
+        self.disclaimer.font = UIFont(name: "Myriad Pro", size: 13)
+        self.disclaimer.textColor = UIColor.lightGrayColor()
         
         let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club")!
-            if let nameStr: String = defaults.valueForKey("name") as? String {
-                self.not.hidden = false
-                self.filledName.hidden = false
-                self.name.hidden = true
-                
-                self.name.text = nil
-                self.filledName.text = nameStr
-            } else {
-                self.edited = true
-                self.not.hidden = true
-                self.filledName.hidden = true
-                self.name.hidden = false
-                self.name.becomeFirstResponder()
-            }
+        if let nameStr: String = defaults.valueForKey("name") as? String {
+            self.not.hidden = false
+            self.filledName.hidden = false
+            self.name.hidden = true
+            
+            self.name.text = nil
+            self.filledName.text = nameStr
+        } else {
+            self.edited = true
+            self.not.hidden = true
+            self.filledName.hidden = true
+            self.name.hidden = false
+            self.name.becomeFirstResponder()
+        }
         data = self.getData()
     }
     
     override func viewDidDisappear(animated: Bool) {
-        saveName()
+        super.viewDidDisappear(animated)
+        self.saveName()
     }
     
     func textViewDidChange(textView: UITextView) {
@@ -60,7 +65,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     
     func saveName() {
-        if edited {
+        if self.edited {
             if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
                 if let code: String = name.text {
                     if !code.isEmpty {
@@ -69,10 +74,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                             if let nameFromCode: String = codeDict.valueForKey(code.lowercaseString) as? String {
                                 nameStr = nameFromCode
                             } else {
-                                alert("Secret code not found", message: "Check that the code was entered properly.")
+                                self.alert("Secret code not found", message: "Check that the code was entered properly.")
                             }
                         } else {
-                            alert("Data pull failed", message: "Unable to pull sign in database; check your connection.")
+                            self.alert("Data pull failed", message: "Unable to pull sign in database; check your connection.")
                             data = self.getData()
                         }
                         
@@ -84,16 +89,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                         }
                         
                         if newStr != "" {
+                            // Encode name for POST requests
                             let encodedNameString = nameStr.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
                             
                             defaults.setObject(nameStr, forKey: "name")
                             defaults.setObject(encodedNameString, forKey: "encoded_name")
                             
-                            not.hidden = false
-                            filledName.hidden = false
-                            name.hidden = true
+                            self.not.hidden = false
+                            self.filledName.hidden = false
+                            self.name.hidden = true
                             
-                            filledName.text = nameStr
+                            self.filledName.text = nameStr
+                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: "goToOfficers")
                         }
                     }
                 }
@@ -103,18 +110,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        saveName()
+        self.saveName()
         return true
     }
     
     @IBAction func changeName() {
-        edited = true
+        self.edited = true
         
-        not.hidden = true
-        filledName.hidden = true
-        name.hidden = false
+        self.not.hidden = true
+        self.filledName.hidden = true
+        self.name.hidden = false
         
-        name.becomeFirstResponder()
+        self.name.becomeFirstResponder()
     }
     
     func getData() -> NSDictionary? {
@@ -147,5 +154,18 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             alert.show()
             
         }
+    }
+    
+    func isLoggedIn() -> Bool {
+        if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
+            if let loggedUser: String = defaults.valueForKey("name") as? String {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func goToOfficers() {
+        self.performSegueWithIdentifier("goToOfficers", sender: self)
     }
 }

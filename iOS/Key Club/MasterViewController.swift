@@ -10,10 +10,13 @@ import UIKit
 
 class MasterViewController: UITableViewController {
     
-    var objects: NSMutableArray = NSMutableArray()
-    var pulledData: NSDictionary = NSDictionary()
-    var tags: [String: String] = [String: String]()
-    var reload: Bool = false
+    var objects: NSMutableArray = NSMutableArray() // Array of things to go in the table view
+    var pulledData: NSDictionary = NSDictionary() // Data to be pulled from https://api.myjson.com/bins/tdd3
+    var tags: [String: String] = [String: String]() // This keeps track of which event goes to which cell so that the right data is used on segue
+    var reload: Bool = false // See if it's an initial load or a reload
+    var settingsButton: UIBarButtonItem = UIBarButtonItem() // Keep this in the global scope to add it when not signed in
+    var firstTime: Bool = true // Only show sign in warning after leaving settings
+    var noButtons: Bool = true // Check to see if the buttons have been added
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,35 +25,40 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Design fixes
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: false)
         self.setNeedsStatusBarAppearanceUpdate()
         
         self.clearsSelectionOnViewWillAppear = false
-        loadTable()
         
         if let myriadPro: UIFont = UIFont(name: "Myriad Pro", size: 20){
             let attrDict: [NSObject: AnyObject] = [NSFontAttributeName: myriadPro]
             self.navigationController?.navigationBar.titleTextAttributes = attrDict
         }
         
-        let announcementButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Announcements"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadInfo")
-        announcementButton.tintColor = UIColor.blackColor()
+        // For whatever reason, iOS 7 doesn't invoke viewDidAppear when performing a segue on load, so setting self.firstTime here is necessary, but it leads to extraneous alerts if it's set here on iOS 8+
+        if (UIDevice.currentDevice().systemVersion as NSString).doubleValue < 8.0 {
+            self.firstTime = false
+        }
         
-        let rightButtons: [UIBarButtonItem] = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "loadTable"), announcementButton]
-        self.navigationItem.rightBarButtonItems = rightButtons
+        // Don't show events if not logged in to deter stalkers (?)
+        self.settingsButton = UIBarButtonItem(image: UIImage(named: "Gear_Large"), landscapeImagePhone: UIImage(named: "Gear_Small"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToSettings")
+        self.settingsButton.tintColor = UIColor.grayColor()
+        self.navigationItem.leftBarButtonItem = self.settingsButton
         
-        let profileButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Profile"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadProf")
-        profileButton.tintColor = UIColor.blackColor()
-        
-        let settingsButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Gear"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadSettings")
-        settingsButton.tintColor = UIColor.grayColor()
-        
-        let leftButtons: [UIBarButtonItem] = [settingsButton, profileButton]
-        self.navigationItem.leftBarButtonItems = leftButtons
-        
-        dispatch_async(dispatch_get_main_queue(), { // Load up announcements first, as per Vincent's request
-            self.performSegueWithIdentifier("loadInfo", sender: self)
-        })
+        if self.isLoggedIn() {
+            loadTable()
+            loadIcons()
+            
+            dispatch_async(dispatch_get_main_queue(), { // Load up announcements first, as per Vincent's request
+                self.performSegueWithIdentifier("loadInfo", sender: self)
+            })
+        } else {
+            // If not logged in, go to Settings and remove reload button
+            self.performSegueWithIdentifier("goToSettings", sender: self)
+            self.navigationItem.rightBarButtonItems = nil
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -63,6 +71,20 @@ class MasterViewController: UITableViewController {
         super.viewWillAppear(animated)
         if let path: NSIndexPath = self.tableView.indexPathForSelectedRow() {
             self.tableView.deselectRowAtIndexPath(path, animated: animated)
+        }
+        
+        if !self.firstTime {
+            if self.isLoggedIn() {
+                if self.noButtons {
+                    loadTable()
+                    loadIcons()
+                    self.noButtons = false
+                }
+            } else {
+                self.alert("Sign in required", message: "Hey! For security purposes, you have to log in to see and sign up for events. If you need a code, see a Key Club officer.")
+            }
+        } else {
+            self.firstTime = false
         }
     }
     
@@ -173,38 +195,66 @@ class MasterViewController: UITableViewController {
                 }
             }
         } else {
-            if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
-                let alert: UIAlertController = UIAlertController(title: "No Connection", message: "The Key Club app requires an Internet connection to function properly.", preferredStyle: .Alert)
-                let action: UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alert.addAction(action)
-                
-                self.presentViewController(alert, animated: true, completion: nil)
-                
-            } else {
-                let alert: UIAlertView = UIAlertView()
-                alert.delegate = self
-                
-                alert.title = "No Connection"
-                alert.message = "The Key Club app requires an Internet connection to function properly."
-                alert.addButtonWithTitle("OK")
-                
-                alert.show()
-                
-            }
+            self.alert("No Connection", message: "The Key Club app requires an Internet connection to function properly.")
         }
     }
     
-    // This is bad; figure out how to use parameters in selectors
+    func alert(title: String, message: String) {
+        if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
+            let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+            let action: UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(action)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        } else {
+            let alert: UIAlertView = UIAlertView()
+            alert.delegate = self
+            
+            alert.title = title
+            alert.message = message
+            alert.addButtonWithTitle("OK")
+            
+            alert.show()
+            
+        }
+    }
     
+    func loadIcons() {
+        let announcementButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Announcements_Large"), landscapeImagePhone: UIImage(named: "Announcements_Small"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadInfo")
+        announcementButton.tintColor = UIColor.blackColor()
+        
+        let rightButtons: [UIBarButtonItem] = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "loadTable"), announcementButton]
+        self.navigationItem.rightBarButtonItems = rightButtons
+        
+        let profButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Profile_Large"), landscapeImagePhone: UIImage(named: "Profile_Small"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToProf")
+        profButton.tintColor = UIColor.blackColor()
+        
+        let leftButtons: [UIBarButtonItem] = [settingsButton, profButton]
+        self.navigationItem.leftBarButtonItems = leftButtons
+        
+        self.noButtons = false
+    }
+    
+    func isLoggedIn() -> Bool {
+        if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
+            if let loggedUser: String = defaults.valueForKey("name") as? String {
+                return true
+            }
+        }
+        return false
+    }
+    
+    // This is bad; figure out how to use parameters in selectors
     func loadInfo() {
         self.performSegueWithIdentifier("loadInfo", sender: self)
     }
     
-    func loadSettings() {
+    func goToSettings() {
         self.performSegueWithIdentifier("goToSettings", sender: self)
     }
     
-    func loadProf() {
+    func goToProf() {
         self.performSegueWithIdentifier("goToProfile", sender: self)
     }
 }

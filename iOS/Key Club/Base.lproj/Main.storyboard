@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14C106a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -39,9 +39,13 @@
             <objects>
                 <navigationController title="Master" id="rS3-R9-Ivy" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="T78-4j-7D9">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="pGg-6v-bdr" kind="relationship" relationship="rootViewController" id="RxB-wf-QIq"/>
                     </connections>
@@ -103,7 +107,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Events" id="tQt-TN-PWz">
-                        <barButtonItem key="leftBarButtonItem" image="Gear" id="Cy6-jg-Dn0">
+                        <barButtonItem key="leftBarButtonItem" image="Gear_Large" id="Cy6-jg-Dn0">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="28h-Vw-CdI" kind="show" identifier="goToSettings" id="Uwt-zv-N1B"/>
@@ -391,11 +395,11 @@
                         <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MMQ-IT-qOo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="IJx-Qy-7gd">
-                                <rect key="frame" x="0.0" y="64" width="600" height="687"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hll-DK-adg">
                                         <rect key="frame" x="282" y="152" width="36" height="17"/>
@@ -524,8 +528,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Details" image="Details" id="JbR-al-qmc"/>
                     <navigationItem key="navigationItem" title="Details" id="cra-N8-TIN"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="chairLabel" destination="Zdp-8X-ahG" id="AFa-eT-vS8"/>
                         <outlet property="chairs" destination="VEn-aQ-DFh" id="u3E-Ji-Yic"/>
@@ -670,7 +672,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="MYq-N5-2qZ">
                         <barButtonItem key="rightBarButtonItem" title="Officers" id="OEm-bO-gGn">
                             <connections>
-                                <segue destination="CZG-94-S9e" kind="show" id="Foo-t5-nMG"/>
+                                <segue destination="CZG-94-S9e" kind="show" identifier="goToOfficers" id="Foo-t5-nMG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -847,11 +849,11 @@
     </scenes>
     <resources>
         <image name="Details" width="44" height="44"/>
-        <image name="Gear" width="44" height="44"/>
+        <image name="Gear_Large" width="44" height="44"/>
         <image name="Logo" width="175" height="26"/>
         <image name="Signups" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c8C-IP-snL"/>
+        <segue reference="Uwt-zv-N1B"/>
     </inferredMetricsTieBreakers>
 </document>
