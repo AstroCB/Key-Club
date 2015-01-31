@@ -40,10 +40,7 @@ class SignupViewController: UIViewController {
                 } else {
                     signStr = "No signups.\nBe the first!"
                 }
-                
-                if let text: UITextView = textView {
-                    textView.text = signStr
-                }
+                self.textView.text = signStr
             }
         }
     }

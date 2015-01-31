@@ -32,24 +32,33 @@ class MasterViewController: UITableViewController {
         
         self.clearsSelectionOnViewWillAppear = false
         
-        if let myriadPro: UIFont = UIFont(name: "Myriad Pro", size: 20){
+        var sizeOfTitle: CGFloat = 20
+        
+        if UIScreen.mainScreen().bounds.height <= 568.0 { // Shrink the title to fit the icons
+            sizeOfTitle = 15
+        }
+        
+        if let myriadPro: UIFont = UIFont(name: "Myriad Pro", size: sizeOfTitle) {
             let attrDict: [NSObject: AnyObject] = [NSFontAttributeName: myriadPro]
             self.navigationController?.navigationBar.titleTextAttributes = attrDict
         }
         
-        // For whatever reason, iOS 7 doesn't invoke viewDidAppear when performing a segue on load, so setting self.firstTime here is necessary, but it leads to extraneous alerts if it's set here on iOS 8+
+        // For whatever reason, iOS 7 doesn't invoke viewDidAppear when performing a segue on load, so setting self.firstTime here is necessary, but it leads to extraneous alerts if it's set here on iOS 8+; also, to prevent table view reload messes, reload has to be set to true since loadTable() isn't called even though the view loads (neither issue causes any problem in iOS 8+)
         if (UIDevice.currentDevice().systemVersion as NSString).doubleValue < 8.0 {
             self.firstTime = false
+            self.reload = true
         }
+        
         
         // Don't show events if not logged in to deter stalkers (?)
         self.settingsButton = UIBarButtonItem(image: UIImage(named: "Gear_Large"), landscapeImagePhone: UIImage(named: "Gear_Small"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToSettings")
         self.settingsButton.tintColor = UIColor.grayColor()
+        self.settingsButton.width = -1.0 // Remove auto-sizing
         self.navigationItem.leftBarButtonItem = self.settingsButton
         
-        if self.isLoggedIn() {
-            loadTable()
-            loadIcons()
+        if isLoggedIn() {
+            self.loadTable()
+            self.loadIcons()
             
             dispatch_async(dispatch_get_main_queue(), { // Load up announcements first, as per Vincent's request
                 self.performSegueWithIdentifier("loadInfo", sender: self)
@@ -74,14 +83,14 @@ class MasterViewController: UITableViewController {
         }
         
         if !self.firstTime {
-            if self.isLoggedIn() {
+            if isLoggedIn() {
                 if self.noButtons {
                     loadTable()
                     loadIcons()
                     self.noButtons = false
                 }
             } else {
-                self.alert("Sign in required", message: "Hey! For security purposes, you have to log in to see and sign up for events. If you need a code, see a Key Club officer.")
+                alert("Sign in required", withMessage: "Hey! For security purposes, you have to log in to see and sign up for events. If you need a code, see a Key Club officer.", toView: self)
             }
         } else {
             self.firstTime = false
@@ -161,11 +170,11 @@ class MasterViewController: UITableViewController {
         })
         
         // Check if it's a reload
-        if reload {
-            objects.removeAllObjects()
+        if self.reload {
+            self.objects.removeAllObjects()
             tableView.reloadData()
         } else {
-            reload = true
+            self.reload = true
         }
         
         // Load original script to refresh
@@ -195,54 +204,26 @@ class MasterViewController: UITableViewController {
                 }
             }
         } else {
-            self.alert("No Connection", message: "The Key Club app requires an Internet connection to function properly.")
-        }
-    }
-    
-    func alert(title: String, message: String) {
-        if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
-            let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-            let action: UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        } else {
-            let alert: UIAlertView = UIAlertView()
-            alert.delegate = self
-            
-            alert.title = title
-            alert.message = message
-            alert.addButtonWithTitle("OK")
-            
-            alert.show()
-            
+            alert("No Connection", withMessage: "The Key Club app requires an Internet connection to function properly.", toView: self)
         }
     }
     
     func loadIcons() {
-        let announcementButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Announcements_Large"), landscapeImagePhone: UIImage(named: "Announcements_Small"), style: UIBarButtonItemStyle.Bordered, target: self, action: "loadInfo")
+        let announcementButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Announcements_Large"), landscapeImagePhone: UIImage(named: "Announcements_Small"), style: UIBarButtonItemStyle.Plain, target: self, action: "loadInfo")
         announcementButton.tintColor = UIColor.blackColor()
         
-        let rightButtons: [UIBarButtonItem] = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "loadTable"), announcementButton]
+        let refreshButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "loadTable")
+        
+        let rightButtons: [UIBarButtonItem] = [refreshButton, announcementButton]
         self.navigationItem.rightBarButtonItems = rightButtons
         
         let profButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Profile_Large"), landscapeImagePhone: UIImage(named: "Profile_Small"), style: UIBarButtonItemStyle.Plain, target: self, action: "goToProf")
         profButton.tintColor = UIColor.blackColor()
+        profButton.width = -1.0 // Remove auto-sizing
         
-        let leftButtons: [UIBarButtonItem] = [settingsButton, profButton]
-        self.navigationItem.leftBarButtonItems = leftButtons
+        self.navigationItem.leftBarButtonItems = [self.settingsButton, profButton]
         
         self.noButtons = false
-    }
-    
-    func isLoggedIn() -> Bool {
-        if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
-            if let loggedUser: String = defaults.valueForKey("name") as? String {
-                return true
-            }
-        }
-        return false
     }
     
     // This is bad; figure out how to use parameters in selectors
@@ -257,4 +238,35 @@ class MasterViewController: UITableViewController {
     func goToProf() {
         self.performSegueWithIdentifier("goToProfile", sender: self)
     }
+}
+
+
+public func alert(title: String, withMessage message: String, toView sender: UIViewController) {
+    if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
+        let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let action: UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(action)
+        
+        sender.presentViewController(alert, animated: true, completion: nil)
+        
+    } else {
+        let alert: UIAlertView = UIAlertView()
+        alert.delegate = sender
+        
+        alert.title = title
+        alert.message = message
+        alert.addButtonWithTitle("OK")
+        
+        alert.show()
+        
+    }
+}
+
+public func isLoggedIn() -> Bool {
+    if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
+        if let loggedUser: String = defaults.valueForKey("name") as? String {
+            return true
+        }
+    }
+    return false
 }

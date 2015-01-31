@@ -10,18 +10,18 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var filledName: UILabel!
-    @IBOutlet weak var not: UIButton!
-    @IBOutlet weak var disclaimer: UITextView!
+    @IBOutlet weak var name: UITextField! // Text field
+    @IBOutlet weak var filledName: UILabel! // Filled in text name
+    @IBOutlet weak var not: UIButton! // "Not you" button
+    @IBOutlet weak var disclaimer: UITextView! // Footer
     
-    var data: NSDictionary?
-    var edited: Bool = false
+    var data: NSDictionary? // Stored data
+    var edited: Bool = false // Has the name been edited, or is it the first entry?
     
     override func viewDidLoad() {
         self.name.delegate = self
         
-        if !self.isLoggedIn() {
+        if !isLoggedIn() {
             self.navigationItem.rightBarButtonItem = nil
         }
         
@@ -74,10 +74,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                             if let nameFromCode: String = codeDict.valueForKey(code.lowercaseString) as? String {
                                 nameStr = nameFromCode
                             } else {
-                                self.alert("Secret code not found", message: "Check that the code was entered properly.")
+                                alert("Secret code not found", withMessage: "Check that the code was entered properly.", toView: self)
                             }
                         } else {
-                            self.alert("Data pull failed", message: "Unable to pull sign in database; check your connection.")
+                            alert("Data pull failed", withMessage: "Unable to pull sign in database; check your connection.", toView: self)
                             data = self.getData()
                         }
                         
@@ -94,13 +94,14 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                             
                             defaults.setObject(nameStr, forKey: "name")
                             defaults.setObject(encodedNameString, forKey: "encoded_name")
+                            defaults.synchronize()
                             
                             self.not.hidden = false
                             self.filledName.hidden = false
                             self.name.hidden = true
                             
                             self.filledName.text = nameStr
-                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: "goToOfficers")
+                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Officers", style: .Plain, target: self, action: "goToOfficers")
                         }
                     }
                 }
@@ -133,36 +134,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             }
         }
         return nil
-    }
-    
-    func alert(title: String, message: String) {
-        if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
-            let alert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-            let action: UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(action)
-            
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-        } else {
-            let alert: UIAlertView = UIAlertView()
-            alert.delegate = self
-            
-            alert.title = title
-            alert.message = message
-            alert.addButtonWithTitle("OK")
-            
-            alert.show()
-            
-        }
-    }
-    
-    func isLoggedIn() -> Bool {
-        if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
-            if let loggedUser: String = defaults.valueForKey("name") as? String {
-                return true
-            }
-        }
-        return false
     }
     
     func goToOfficers() {

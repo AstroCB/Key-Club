@@ -182,10 +182,10 @@ class OfficerViewController: UIViewController, MFMailComposeViewControllerDelega
             
             if couldSaveAddressBook{
                 println("Successfully saved the address book.")
-                self.alert("Success", message: "Successfully added \(firstName) \(lastName) to Contacts.")
+                alert("Success", withMessage: "Successfully added \(firstName) \(lastName) to Contacts.", toView: self)
             } else {
                 println("Failed to save the address book.")
-                self.alert("Save failed", message: "Unable to save contact")
+                alert("Save failed", withMessage: "Unable to save contact", toView: self)
             }
         }
     }
@@ -201,23 +201,6 @@ class OfficerViewController: UIViewController, MFMailComposeViewControllerDelega
             dispatch_async(dispatch_get_main_queue(), {
                 self.presentViewController(mailController, animated: true, completion: nil)
             })
-        }
-    }
-    
-    func alert(title: String, message: String) {
-        if let getModernAlert: AnyClass = NSClassFromString("UIAlertController") {
-            let myAlert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(myAlert, animated: true, completion: nil)
-        } else {
-            let alert: UIAlertView = UIAlertView()
-            alert.delegate = self
-            
-            alert.title = title
-            alert.message = message
-            alert.addButtonWithTitle("OK")
-            
-            alert.show()
         }
     }
 }

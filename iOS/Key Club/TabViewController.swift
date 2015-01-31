@@ -53,10 +53,10 @@ class TabViewController: UITabBarController {
                             }
                             if signView.numSignedUp < detailView.maxNum {
                                 let event: String = detailView.curEvent.valueForKey("pretty_name") as String
-                                self.alert("Signed up!", message:"You've successfully signed up for \(event).")
+                                alert("Signed up!", withMessage:"You've successfully signed up for \(event).", toView: self)
                             } else {
                                 // Too many people signed up
-                                self.alert("Too many signups", message: "You've been placed in a waiting queue.")
+                                alert("Too many signups", withMessage: "You've been placed in a waiting queue.", toView: self)
                             }
                         })
                     })
@@ -134,22 +134,5 @@ class TabViewController: UITabBarController {
         
         let shareSheet: UIActivityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         self.presentViewController(shareSheet, animated: true, completion: nil)
-    }
-    
-    func alert(title: String, message: String) {
-        if let getModernAlert: AnyClass = NSClassFromString("UIAlertController") {
-            let myAlert: UIAlertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-            myAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(myAlert, animated: true, completion: nil)
-        } else {
-            let alert: UIAlertView = UIAlertView()
-            alert.delegate = self
-            
-            alert.title = title
-            alert.message = message
-            alert.addButtonWithTitle("OK")
-            
-            alert.show()
-        }
     }
 }
