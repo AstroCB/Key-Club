@@ -9,13 +9,15 @@
 import UIKit
 
 class TabViewController: UITabBarController {
+    var shareButton: UIBarButtonItem = UIBarButtonItem() // Save the share button for popOverViewController
+    
     override func viewDidLoad() {
         if let controllers: [AnyObject] = self.viewControllers {
             if let view: SignupViewController = controllers[1] as? SignupViewController {
                 let signUpButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "sendSignup")
-                let shareButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share")
+                self.shareButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "share")
                 
-                self.navigationItem.rightBarButtonItems = [signUpButton, shareButton]
+                self.navigationItem.rightBarButtonItems = [signUpButton, self.shareButton]
             }
         }
     }
@@ -133,6 +135,12 @@ class TabViewController: UITabBarController {
         }
         
         let shareSheet: UIActivityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        // iPad support
+        if let popoverController = shareSheet.popoverPresentationController {
+            popoverController.barButtonItem = self.shareButton
+        }
+        
         self.presentViewController(shareSheet, animated: true, completion: nil)
     }
 }

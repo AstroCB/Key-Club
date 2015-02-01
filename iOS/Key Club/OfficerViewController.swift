@@ -110,6 +110,11 @@ class OfficerViewController: UIViewController, MFMailComposeViewControllerDelega
                         dialog.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
                         
                         dispatch_async(dispatch_get_main_queue(), {
+                            // iPad support
+                            if let popoverController = dialog.popoverPresentationController {
+                                popoverController.sourceView = sender.view!
+                                popoverController.sourceRect = sender.view!.bounds
+                            }
                             self.presentViewController(dialog, animated: true, completion: nil)
                         })
                     } else {
