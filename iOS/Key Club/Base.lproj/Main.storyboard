@@ -186,6 +186,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="S0B-rK-oNJ" id="BO8-Rk-pyA"/>
+                        <outlet property="forwardButton" destination="3jl-3q-BeV" id="gek-fn-k6B"/>
                         <outlet property="navigationTitle" destination="4xt-Yo-DRz" id="ea3-Ak-rya"/>
                         <outlet property="webView" destination="Axf-6n-Mci" id="s8X-im-h48"/>
                     </connections>
@@ -556,12 +558,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-kQ-H4x"/>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="NEu-m7-KNe">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="NEu-m7-KNe">
                                 <rect key="frame" x="559" y="72" width="20" height="20"/>
                             </activityIndicatorView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R39-Kf-QZ5">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R39-Kf-QZ5">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                                <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -569,12 +571,10 @@
                         <color key="backgroundColor" red="0.019607843140000001" green="0.20000000000000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="R39-Kf-QZ5" firstAttribute="top" secondItem="5yH-2b-3kX" secondAttribute="bottom" id="dFp-sq-H29"/>
-                            <constraint firstItem="R39-Kf-QZ5" firstAttribute="leading" secondItem="FlR-Qo-Gf6" secondAttribute="leadingMargin" constant="-16" id="kFy-5S-k9d"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="R39-Kf-QZ5" secondAttribute="trailing" constant="-16" id="s1O-kQ-ibg"/>
-                            <constraint firstItem="qLN-XY-PET" firstAttribute="top" secondItem="R39-Kf-QZ5" secondAttribute="bottom" id="sEw-Se-b75"/>
-                            <constraint firstItem="NEu-m7-KNe" firstAttribute="top" secondItem="5yH-2b-3kX" secondAttribute="bottom" constant="8" id="xHP-6z-8T5"/>
-                            <constraint firstItem="NEu-m7-KNe" firstAttribute="trailing" secondItem="FlR-Qo-Gf6" secondAttribute="trailingMargin" constant="-5" id="xgn-mM-0Ah"/>
+                            <constraint firstItem="R39-Kf-QZ5" firstAttribute="leading" secondItem="FlR-Qo-Gf6" secondAttribute="leadingMargin" constant="-16" id="1qW-T2-fDv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="R39-Kf-QZ5" secondAttribute="trailing" constant="-16" id="IeV-ge-xN2"/>
+                            <constraint firstItem="R39-Kf-QZ5" firstAttribute="top" secondItem="FlR-Qo-Gf6" secondAttribute="topMargin" constant="64" id="Xl1-cI-4Jq"/>
+                            <constraint firstItem="R39-Kf-QZ5" firstAttribute="bottom" secondItem="FlR-Qo-Gf6" secondAttribute="bottomMargin" constant="-49" id="f98-gZ-ltZ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Signups" image="Signups" id="Yay-Jy-ASN"/>
@@ -854,6 +854,6 @@
         <image name="Signups" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Uwt-zv-N1B"/>
+        <segue reference="c8C-IP-snL"/>
     </inferredMetricsTieBreakers>
 </document>

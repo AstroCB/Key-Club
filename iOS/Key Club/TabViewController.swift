@@ -137,8 +137,10 @@ class TabViewController: UITabBarController {
         let shareSheet: UIActivityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         
         // iPad support
-        if let popoverController = shareSheet.popoverPresentationController {
-            popoverController.barButtonItem = self.shareButton
+        if let popoverAvailable: AnyClass = NSClassFromString("UIPopoverPresentationController"){ // iPad only; this check shouldn't be required, but iOS 7 freaks out if you try to use PopoverPresentationController on iPhone
+            if let popoverController: UIPopoverPresentationController = shareSheet.popoverPresentationController {
+                popoverController.barButtonItem = self.shareButton
+            }
         }
         
         self.presentViewController(shareSheet, animated: true, completion: nil)

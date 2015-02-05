@@ -13,6 +13,8 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var navigationTitle: UINavigationItem!
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var forwardButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         if let myriadPro: UIFont = UIFont(name: "Myriad Pro", size: 20){
@@ -24,8 +26,9 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         // Disable bouncing to appear semi-native
         self.webView.scrollView.bounces = false
         self.webView.scrollView.indicatorStyle = .White
+        self.webView.scrollView.showsHorizontalScrollIndicator = false
         
-        self.loadURL("https://dl.dropboxusercontent.com/u/24397004/tweet.html")
+        self.loadURL("https://dl.dropboxusercontent.com/u/24397004/Permanent%20To%20Share/tweet.html")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -60,6 +63,17 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        if !self.webView.canGoBack {
+            self.backButton.enabled = false
+        } else {
+            self.backButton.enabled = true
+        }
+        
+        if !self.webView.canGoForward {
+            self.forwardButton.enabled = false
+        } else {
+            self.forwardButton.enabled = true
+        }
     }
     
 }

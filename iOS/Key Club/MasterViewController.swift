@@ -34,7 +34,7 @@ class MasterViewController: UITableViewController {
         
         var sizeOfTitle: CGFloat = 20
         
-        if UIScreen.mainScreen().bounds.height <= 568.0 { // Shrink the title to fit the icons
+        if UIScreen.mainScreen().bounds.height <= 568.0 { // Shrink the title to fit the icons on 4s
             sizeOfTitle = 15
         }
         
