@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
     
@@ -75,6 +76,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                                 nameStr = nameFromCode
                             } else {
                                 alert("Secret code not found", withMessage: "Check that the code was entered properly.", toView: self)
+                                // Vibrate
+                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                             }
                         } else {
                             alert("Data pull failed", withMessage: "Unable to pull sign in database; check your connection.", toView: self)
