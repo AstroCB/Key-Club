@@ -561,7 +561,7 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="NEu-m7-KNe">
                                 <rect key="frame" x="559" y="72" width="20" height="20"/>
                             </activityIndicatorView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R39-Kf-QZ5">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" editable="NO" text="No signups." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R39-Kf-QZ5">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -850,9 +850,9 @@
     <resources>
         <image name="Details" width="44" height="44"/>
         <image name="Gear_Large" width="44" height="44"/>
-        <image name="Left_Arrow" width="10" height="10"/>
+        <image name="Left_Arrow" width="22" height="22"/>
         <image name="Logo" width="175" height="26"/>
-        <image name="Right_Arrow" width="10" height="10"/>
+        <image name="Right_Arrow" width="22" height="22"/>
         <image name="Signups" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
