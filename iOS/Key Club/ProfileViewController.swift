@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 class ProfileViewController: UIViewController, UIWebViewDelegate {
+    /// A WebView that displays the profile page.
     @IBOutlet weak var webView: UIWebView!
+    /// Title of navigation bar for applying proper font.
     @IBOutlet weak var navigationTitle: UINavigationItem!
     
     
@@ -20,10 +22,10 @@ class ProfileViewController: UIViewController, UIWebViewDelegate {
             self.navigationController?.navigationBar.titleTextAttributes = attrDict
         }
         
-        webView.delegate = self
+        self.webView.delegate = self
         
         // Disable bouncing to appear semi-native
-        webView.scrollView.bounces = false
+        self.webView.scrollView.bounces = false
         if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club"){
             if let user: String = defaults.valueForKey("encoded_name") as? String {
                 loadURL("https://script.google.com/macros/s/AKfycbxHk_GXziSAwSH6umVyz3LnnbgpkA9BnqvL2ILeFdhdUkLKobg/exec?leadWeb=true&person=\(user)")

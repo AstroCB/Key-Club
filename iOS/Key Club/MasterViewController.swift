@@ -9,14 +9,20 @@
 import UIKit
 
 class MasterViewController: UITableViewController {
-    
-    var objects: NSMutableArray = NSMutableArray() // Array of things to go in the table view
-    var pulledData: NSDictionary = NSDictionary() // Data to be pulled from https://api.myjson.com/bins/tdd3
-    var tags: [String: String] = [String: String]() // This keeps track of which event goes to which cell so that the right data is used on segue
-    var reload: Bool = false // See if it's an initial load or a reload
-    var settingsButton: UIBarButtonItem = UIBarButtonItem() // Keep this in the global scope to add it when not signed in
-    var firstTime: Bool = true // Only show sign in warning after leaving settings
-    var noButtons: Bool = true // Check to see if the buttons have been added
+    /// Array of things to go in the table view.
+    var objects: NSMutableArray = NSMutableArray()
+    /// Data to be pulled from https://api.myjson.com/bins/tdd3
+    var pulledData: NSDictionary = NSDictionary()
+    /// This keeps track of which event goes to which cell so that the right data is used on segue.
+    var tags: [String: String] = [String: String]()
+    /// See if it's an initial load or a reload.
+    var reload: Bool = false
+    /// Keep this in the global scope to add it when not signed in.
+    var settingsButton: UIBarButtonItem = UIBarButtonItem()
+    /// Only show sign in warning after leaving settings.
+    var firstTime: Bool = true
+    /// Check to see if the buttons have been added (for login security).
+    var noButtons: Bool = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -103,7 +109,7 @@ class MasterViewController: UITableViewController {
         dict.setValue(obj, forKey: "name")
         dict.setValue(date, forKey: "date")
         
-        objects.insertObject(dict, atIndex: 0)
+        self.objects.insertObject(dict, atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
@@ -185,7 +191,7 @@ class MasterViewController: UITableViewController {
         }
         
         if let data = getData() {
-            pulledData = data
+            self.pulledData = data
             for i in data {
                 if let event: NSDictionary = i.value as? NSDictionary {
                     if let name: String = event.valueForKey("pretty_name") as? String {
@@ -226,7 +232,6 @@ class MasterViewController: UITableViewController {
         self.noButtons = false
     }
     
-    // This is bad; figure out how to use parameters in selectors
     func loadInfo() {
         self.performSegueWithIdentifier("loadInfo", sender: self)
     }
@@ -240,6 +245,13 @@ class MasterViewController: UITableViewController {
     }
 }
 
+/**
+Present a UIAlert using a UIAlertViewController (iOS 8+) or UIAlertView (iOS 7).
+
+:param: title Title of the alert.
+:param: withMessage Message body of the alert.
+:param: toView View on which to present the alert.
+*/
 
 public func alert(title: String, withMessage message: String, toView sender: UIViewController) {
     if let gotModernAlert: AnyClass = NSClassFromString("UIAlertController") {
@@ -262,6 +274,11 @@ public func alert(title: String, withMessage message: String, toView sender: UIV
     }
 }
 
+/**
+Checks whether a user is logged into the Key Club app.
+
+:returns: Boolean value indicating whether the user is logged in.
+*/
 public func isLoggedIn() -> Bool {
     if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
         if let loggedUser: String = defaults.valueForKey("name") as? String {

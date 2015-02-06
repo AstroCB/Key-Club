@@ -10,8 +10,8 @@ import UIKit
 import AudioToolbox
 
 class SettingsViewController: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet weak var name: UITextField! // Text field
+    /// Text field.
+    @IBOutlet weak var name: UITextField!
     @IBOutlet weak var filledName: UILabel! // Filled in text name
     @IBOutlet weak var not: UIButton! // "Not you" button
     @IBOutlet weak var disclaimer: UITextView! // Footer

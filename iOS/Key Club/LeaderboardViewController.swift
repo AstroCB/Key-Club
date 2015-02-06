@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class LeaderboardViewController: UIViewController {
+    /// TextView that holds rankings.
     @IBOutlet weak var leaderList: UITextView!
     
     override func viewDidLoad() {
