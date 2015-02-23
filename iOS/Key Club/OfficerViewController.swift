@@ -15,7 +15,6 @@ import AddressBookUI
 class OfficerViewController: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     let officers: [String: [String: String]] = ["Michelle Ko": ["Position": "President", "Email": "ko.michelle@live.com", "Phone": "323-370-5141"], "Yusuf Mahmood": ["Position": "Vice President", "Email": "ymahmood.work@gmail.com", "Phone": "443-632-8343"], "Angela Zhang": ["Position": "Membership Secretary", "Email": "angelazhang117@gmail.com", "Phone": "443-418-8273"], "Ben Lee": ["Position": "Treasurer", "Email": "benlee59@gmail.com", "Phone": "410-214-7780"], "Ni Tial": ["Position": "Recording Secretary", "Email": "cydindin@gmail.com", "Phone": "443-621-3285"], "Lyra Morina": ["Position": "Historian", "Email": "lyraamor@yahoo.com", "Phone": "443-717-0520"], "Sahana Raju": ["Position": "Historian", "Email": "sahana_rj@yahoo.com", "Phone": "443-418-9842"], "Sumin Woo": ["Position": "Editor", "Email": "suminwoo98@gmail.com", "Phone": "410-916-9029"]]
     
-    
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
         // Required class method
         self.dismissViewControllerAnimated(true, completion: nil)
