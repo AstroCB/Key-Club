@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -558,29 +558,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-kQ-H4x"/>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="NEu-m7-KNe">
-                                <rect key="frame" x="559" y="72" width="20" height="20"/>
-                            </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" indicatorStyle="white" editable="NO" text="No signups." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R39-Kf-QZ5">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="b4s-Qs-Lzs">
+                                <rect key="frame" x="564" y="72" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.019607843140000001" green="0.20000000000000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="R39-Kf-QZ5" firstAttribute="leading" secondItem="FlR-Qo-Gf6" secondAttribute="leadingMargin" constant="-16" id="1qW-T2-fDv"/>
+                            <constraint firstItem="b4s-Qs-Lzs" firstAttribute="top" secondItem="5yH-2b-3kX" secondAttribute="bottom" constant="8" id="9KC-nS-zJb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R39-Kf-QZ5" secondAttribute="trailing" constant="-16" id="IeV-ge-xN2"/>
                             <constraint firstItem="R39-Kf-QZ5" firstAttribute="top" secondItem="FlR-Qo-Gf6" secondAttribute="topMargin" constant="64" id="Xl1-cI-4Jq"/>
                             <constraint firstItem="R39-Kf-QZ5" firstAttribute="bottom" secondItem="FlR-Qo-Gf6" secondAttribute="bottomMargin" constant="-49" id="f98-gZ-ltZ"/>
+                            <constraint firstItem="b4s-Qs-Lzs" firstAttribute="trailing" secondItem="FlR-Qo-Gf6" secondAttribute="trailingMargin" id="oDZ-wX-9XV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Signups" image="Signups" id="Yay-Jy-ASN"/>
                     <navigationItem key="navigationItem" title="Signups" id="1DB-RJ-DJs"/>
                     <connections>
-                        <outlet property="activity" destination="NEu-m7-KNe" id="pUx-1p-fu6"/>
+                        <outlet property="activity" destination="b4s-Qs-Lzs" id="0i1-xZ-RGG"/>
                         <outlet property="textView" destination="R39-Kf-QZ5" id="edE-6H-c8X"/>
                     </connections>
                 </viewController>

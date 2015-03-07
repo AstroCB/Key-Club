@@ -48,7 +48,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
             self.name.hidden = false
             self.name.becomeFirstResponder()
         }
-        data = self.getData()
+        self.data = self.getData()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -68,10 +68,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     func saveName() {
         if self.edited {
             if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
-                if let code: String = name.text {
+                if let code: String = self.name.text {
                     if !code.isEmpty {
                         var nameStr: String = ""
-                        if let codeDict: NSDictionary = data {
+                        if let codeDict: NSDictionary = self.data {
                             if let nameFromCode: String = codeDict.valueForKey(code.lowercaseString) as? String {
                                 nameStr = nameFromCode
                             } else {
