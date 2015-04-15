@@ -64,12 +64,12 @@ class DetailViewController: UIViewController {
                 // Set date
                 if let date: NSDictionary = self.curEvent.valueForKey("date") as? NSDictionary {
                     if let month: Int = date.valueForKey("month") as? Int {
-                        let day: Int = date.valueForKey("day") as Int
-                        let year: Int = date.valueForKey("year") as Int
+                        let day: Int = date.valueForKey("day") as! Int
+                        let year: Int = date.valueForKey("year") as! Int
                         self.eventDescription.text = "\(month)/\(day)/\(year)"
                         
                         if let time: String = self.curEvent.valueForKey("time") as? String {
-                            if countElements(time) > 0 {
+                            if count(time) > 0 {
                                 self.eventDescription.numberOfLines++
                                 if time == "TBD" {
                                     self.eventDescription.text = "\(self.eventDescription.text!)\n(Time TBD)"

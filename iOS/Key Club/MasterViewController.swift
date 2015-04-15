@@ -110,7 +110,7 @@ class MasterViewController: UITableViewController {
         dict.setValue(date, forKey: "date")
         
         self.objects.insertObject(dict, atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        let indexPath: NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
     
@@ -118,12 +118,12 @@ class MasterViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let indexPath = self.tableView.indexPathForSelectedRow() {
-            let dict: NSDictionary = objects[indexPath.row] as NSDictionary
-            let object: String = dict.valueForKey("name") as String
+            let dict: NSDictionary = objects[indexPath.row] as! NSDictionary
+            let object: String = dict.valueForKey("name") as! String
             if let realIndex: String = tags[object] {
-                let val: NSDictionary = pulledData.valueForKey(realIndex) as NSDictionary
+                let val: NSDictionary = pulledData.valueForKey(realIndex) as! NSDictionary
                 if let view: UITabBarController = segue.destinationViewController as? UITabBarController {
-                    let views: [UIViewController] = (view.viewControllers as [UIViewController])
+                    let views: [UIViewController] = (view.viewControllers as! [UIViewController])
                     if let nextView: DetailViewController = views[0] as? DetailViewController {
                         // Send values to next view to avoid another network call
                         nextView.curEvent = val
@@ -146,8 +146,8 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let object = objects[indexPath.row] as NSDictionary
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let object = objects[indexPath.row] as! NSDictionary
         
         cell.textLabel?.text = object.valueForKey("name") as? String
         cell.detailTextLabel?.text = object.valueForKey("date") as? String

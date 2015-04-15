@@ -17,6 +17,8 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.popView()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,16 +26,16 @@ class SignupViewController: UIViewController {
     }
     
     func popView() {
-        let myKey: String = (self.tabBarController?.viewControllers as [DetailViewController])[0].key
+        let myKey: String = (self.tabBarController?.viewControllers as! [DetailViewController])[0].key
         if let event: NSDictionary = self.getData()?.valueForKey(myKey) as? NSDictionary {
             if let signers: String = event.valueForKey("signups") as? String {
                 let signArr: [String] = signers.split(",")
                 var signStr = ""
-                if countElements(signers) > 0 {
+                if count(signers) > 0 {
                     for i in signArr {
                         self.numSignedUp++
                         
-                        if self.numSignedUp <= (self.tabBarController?.viewControllers as [DetailViewController])[0].maxNum {
+                        if self.numSignedUp <= (self.tabBarController?.viewControllers as! [DetailViewController])[0].maxNum {
                             signStr += "\(i)\n\n"
                         }
                     }

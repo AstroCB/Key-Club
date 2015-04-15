@@ -23,8 +23,8 @@ class TabViewController: UITabBarController {
     }
     
     internal func sendSignup() {
-        let detailView: DetailViewController = (self.viewControllers as [UIViewController])[0] as DetailViewController
-        let signView: SignupViewController = (self.viewControllers as [UIViewController])[1] as SignupViewController
+        let detailView: DetailViewController = (self.viewControllers as! [UIViewController])[0] as! DetailViewController
+        let signView: SignupViewController = (self.viewControllers as! [UIViewController])[1] as! SignupViewController
         
         if let defaults: NSUserDefaults = NSUserDefaults(suiteName: "group.Key-Club") {
             if let signer: String = defaults.valueForKey("encoded_name") as? String {
@@ -54,7 +54,7 @@ class TabViewController: UITabBarController {
                                 nextSign.stopAnimating()
                             }
                             if signView.numSignedUp < detailView.maxNum {
-                                let event: String = detailView.curEvent.valueForKey("pretty_name") as String
+                                let event: String = detailView.curEvent.valueForKey("pretty_name") as! String
                                 alert("Signed up!", withMessage:"You've successfully signed up for \(event).", toView: self)
                             } else {
                                 // Too many people signed up
@@ -73,7 +73,7 @@ class TabViewController: UITabBarController {
     }
     
     internal func share() {
-        let detailView: DetailViewController = (self.viewControllers as [UIViewController])[0] as DetailViewController // Need this VC for details
+        let detailView: DetailViewController = (self.viewControllers as! [UIViewController])[0] as! DetailViewController // Need this VC for details
         
         // Grab all of the event details
         let name: String? = detailView.curEvent.valueForKey("pretty_name") as? String
